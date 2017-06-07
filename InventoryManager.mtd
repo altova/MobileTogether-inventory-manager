@@ -1,0 +1,2109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MobileTogetherDesign versionClient="55" versionServer="55" deploymentPath_so="/public/Inventory Manager" deploymentDescription_so="Version 70606b -14:14 - Updated with better UI and v 3.2 features, added back buttons." deploymentGlobalResourceConfig_so="Default">
+	<DesignRoot id="1">
+		<style askCancelWorkflow="0" cancelWorkflowMsg_x="&apos;Check back later to see if current inventory is consumed by incoming sales. 
+
+Confirm exit:&apos;" serverAccess="ondemand" timeoutClient="30" timeoutDataRetrieval="30" webOrientation="landscape" workflowIcon="CompanySales.png"/>
+		<children>
+			<DesignPage id="2">
+				<style name="Inventory Manager" showTitleBar="0"/>
+				<children>
+					<DesignLabel id="849">
+						<style align="center" margin="6px" multiLine="1" name="Portrait orientation warning" text="More data visible in landscape orientation or on a larger device" textColor="green" textSize="medium" visible_x="$MT_CanvasX &lt; 751" weight="1"/>
+						<appliedVar ref="35"/>
+					</DesignLabel>
+					<DesignLabel id="1944">
+						<style align="center" margin="2px" marginBottom="0px" marginRight="6px" name="Mail Title" text="Inventory and Demand" textSize="large" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()" weight="1"/>
+					</DesignLabel>
+					<DesignTable id="1280">
+						<style marginBottom="2px" name="Table1" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+						<children>
+							<DesignTableCol id="1917">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableCol id="1282">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableCol id="1977"/>
+							<DesignTableCol id="2688">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableCol id="2696">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableRow id="1283">
+								<children>
+									<DesignLabel id="1912">
+										<style align="left" margin="2px" marginBottom="0px" marginRight="6px" name="Average Daily Demand Label" text="Inventory Status" textSize="large" valign="middle" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1263">
+										<style align="center" dtFormat="[M01]/[D01]/[Y0001]" marginLeft="6px" marginRight="6px" name="Label12" text_x="$PERSISTENT/Root/CurrentDate" valign="middle" weight="0"/>
+									</DesignLabel>
+									<DesignLabel id="1980">
+										<style align="center" marginBottom="2px" name="Simulation Time" text_x="TimeAsString()" textSize="large" valign="middle" visible_x="$RemainingOrders/DB/RowSet/Row/@Waiting &gt; 0" weight="1"/>
+									</DesignLabel>
+									<DesignButton id="2681">
+										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" margin="6px" marginLeft="0px" marginRight="0px" multiLine="1" name="Advance clock button" text="Advance Clock" valign="middle" visible_x="$RemainingOrders/DB/RowSet/Row/@Waiting &gt; 0" weight="1"/>
+										<controlActions id="2682">
+											<children>
+												<DesignActionGroupRef id="2685" groupRef="2162"/>
+												<DesignActionGroupRef id="2686" groupRef="2081"/>
+												<DesignActionGroupRef id="2687" groupRef="2162"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+									<DesignButton id="2690">
+										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" margin="10px" marginLeft="20px" marginRight="20px" multiLine="1" name="Performance Evaluation Button" text="Evaluate Performance" visible_x="$RemainingOrders/DB/RowSet/Row/@Waiting = 0" weight="1"/>
+										<controlActions id="2691">
+											<children>
+												<DesignActionGotoSubpage id="2694" pageRef="2196"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignTable id="2619">
+						<style marginBottom="0px" name="Table11"/>
+						<children>
+							<DesignTableCol id="2620">
+								<style colWidth="40%"/>
+							</DesignTableCol>
+							<DesignTableCol id="2621">
+								<style colWidth="10%"/>
+							</DesignTableCol>
+							<DesignTableCol id="2622">
+								<style colWidth="40%"/>
+							</DesignTableCol>
+							<DesignTableCol id="2623">
+								<style colWidth="10%"/>
+							</DesignTableCol>
+							<DesignTableRow id="2625">
+								<children>
+									<DesignLabel id="2626">
+										<style align="center" margin="2px" marginBottom="0px" marginTop="0px" multiLine="1" name="Label43" text="Customer orders received: " valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2628" pageXML="1588">
+										<style align="center" format="#0" margin="2px" marginBottom="0px" name="Label44" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="2630">
+										<style align="center" margin="2px" marginTop="0px" multiLine="1" name="Label36" text="Additional expected: " valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2632" pageXML="1225">
+										<style align="center" format="#0" margin="2px" marginTop="0px" name="Label37" valign="bottom" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignTable id="2659">
+						<style name="Table6"/>
+						<children>
+							<DesignTableCol id="2660"/>
+							<DesignTableCol id="2661"/>
+							<DesignTableCol id="2662"/>
+							<DesignTableRow id="2663">
+								<children>
+									<DesignButton id="2636">
+										<style backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="4px" marginRight="4px" name="Button1" text="Table" underline_x="if ($PERSISTENT/Root/mainView = &apos;order&apos;) then true() else false()"/>
+										<controlActions id="2664">
+											<children>
+												<DesignActionUpdateNode id="2667" updAt="$PERSISTENT/Root/mainView" resOf="&quot;order&quot;"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+									<DesignButton id="2637">
+										<style backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="4px" marginRight="4px" name="Button2" text="Chart" underline_x="if ($PERSISTENT/Root/mainView = &apos;chart&apos;) then true() else false()"/>
+										<controlActions id="2668">
+											<children>
+												<DesignActionUpdateNode id="2671" updAt="$PERSISTENT/Root/mainView" resOf="&quot;chart&quot;"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+									<DesignButton id="2638">
+										<style backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="4px" marginRight="4px" name="Button3" text="Forecast" underline_x="if ($PERSISTENT/Root/mainView = &apos;forecast&apos;) then true() else false()"/>
+										<controlActions id="2672">
+											<children>
+												<DesignActionUpdateNode id="2675" updAt="$PERSISTENT/Root/mainView" resOf="&quot;forecast&quot;"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignTable id="1019">
+						<style name="Table3" visible_x="( $MT_CanvasX &lt; 751 and $MT_Portrait = true() ) and $PERSISTENT/Root/mainView = &quot;order&quot;"/>
+						<children>
+							<DesignTableCol id="1020">
+								<style colWidth="35%"/>
+							</DesignTableCol>
+							<DesignTableCol id="1023"/>
+							<DesignTableCol id="1024"/>
+							<DesignTableRow id="1025">
+								<children>
+									<DesignLabel id="1026">
+										<style margin="2px" name="Label20" text="Part" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1032">
+										<style align="right" margin="4px" marginRight="5px" multiLine="1" name="Label23" text_x="&apos;Current
+ Available
+ or Short&apos;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1034">
+										<style align="center" margin="4px" marginLeft="6px" multiLine="1" name="Label24" text_x="&quot;Buy
+ More:&quot;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="1036" pageXML="1729">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="1037">
+										<children>
+											<DesignLabel id="1038" pageXML="1649">
+												<style margin="4px" name="Label25" textSize="small"/>
+											</DesignLabel>
+											<DesignLabel id="1044" pageXML="1652">
+												<style align="right" format="#,##0" margin="2px" marginRight="5px" name="Label28" textColor_x="if ( ( inventory_status &lt; 0.5 ) or ( inventory_status &gt; 2 ) ) then &quot;#ff0000&quot; else &quot;#04b508&quot;" textSize="small"/>
+											</DesignLabel>
+											<DesignEditField id="1046" pageXML="1653">
+												<style align="right" keyboard="Number" margin="2px" marginLeft="15px" name="Edit Field2" textColor_x="if   ( $MT_ControlNode castable as xs:integer and  ( ( order &lt; 1 ) or ( order &gt; 2000 ) ) )  then  &quot;#ff0000&quot; else $MT_LabelTextColor" textSize="small"/>
+											</DesignEditField>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignTable id="124">
+						<style name="Table4" visible_x="($MT_CanvasX &gt; 750 or  $MT_Landscape = true() )and $PERSISTENT/Root/mainView = &quot;order&quot;"/>
+						<children>
+							<DesignTableCol id="125">
+								<style colWidth="19%"/>
+							</DesignTableCol>
+							<DesignTableCol id="508"/>
+							<DesignTableCol id="126"/>
+							<DesignTableCol id="1242"/>
+							<DesignTableCol id="127"/>
+							<DesignTableCol id="1256"/>
+							<DesignTableCol id="128"/>
+							<DesignTableRow id="129">
+								<children>
+									<DesignLabel id="208">
+										<style marginBottom="4px" marginLeft="4px" name="Label4" text="Part" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="507">
+										<style align="right" margin="2px" marginBottom="4px" marginLeft="0px" marginRight="0px" multiLine="1" name="Label14" text_x="&apos;Quantity
+ Purchased
+ Month to Date&apos;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="210">
+										<style align="right" margin="2px" marginBottom="4px" marginLeft="0px" marginRight="0px" multiLine="1" name="Label5" text_x="&apos;Factory
+ Demand
+ MTD&apos;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1235">
+										<style align="right" margin="2px" marginBottom="4px" marginLeft="0px" marginRight="0px" multiLine="1" name="Label38" text_x="&apos;Average
+ Daily
+ Demand&apos;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="211">
+										<style align="right" margin="2px" marginBottom="4px" marginLeft="0px" marginRight="0px" multiLine="1" name="Label6" text_x="&apos;Current
+ Available
+ or Short&apos;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1251">
+										<style align="right" margin="2px" marginBottom="4px" marginLeft="0px" marginRight="0px" multiLine="1" name="Label40" text_x="&apos;Inventory
+ as % of
+ Demand&apos;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="212">
+										<style align="center" margin="2px" marginBottom="4px" marginLeft="6px" multiLine="1" name="Label7" text_x="&quot;Buy
+ More:&quot;" textSize="small" valign="bottom" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="134" pageXML="1729">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="135">
+										<children>
+											<DesignLabel id="136" pageXML="1649">
+												<style margin="1px" marginLeft="4px" name="Label1"/>
+											</DesignLabel>
+											<DesignLabel id="505" pageXML="1650">
+												<style align="right" format="#,##0" margin="1px" marginLeft="0px" marginRight="0px" name="Label13"/>
+											</DesignLabel>
+											<DesignLabel id="138" pageXML="1651">
+												<style align="right" format="#,##0" margin="1px" marginLeft="0px" marginRight="0px" name="Label2"/>
+											</DesignLabel>
+											<DesignLabel id="1238" pageXML="1654">
+												<style align="right" format="#,##0" margin="1px" marginLeft="0px" marginRight="0px" name="Label39"/>
+											</DesignLabel>
+											<DesignLabel id="140" pageXML="1652">
+												<style align="right" format="#,##0" margin="1px" marginLeft="0px" marginRight="0px" name="Label3" textColor_x="if ( inventory &lt; 0 ) then &quot;#ff0000&quot; else $MT_LabelTextColor"/>
+											</DesignLabel>
+											<DesignLabel id="1254" pageXML="1655">
+												<style align="right" format="#0%" margin="1px" marginBottom="6px" marginLeft="0px" marginRight="0px" marginTop="6px" name="Label41" textColor_x="if ( ( inventory_status &lt; 0.5 ) or ( inventory_status &gt; 2 ) ) then &quot;#ff0000&quot; else &quot;#04b508&quot;" textSize="medium" valign="middle" weight="1"/>
+											</DesignLabel>
+											<DesignEditField id="142" pageXML="1653">
+												<style align="right" keyboard="Number" margin="1px" marginLeft="15px" name="Edit Field1" textColor_x="if   ( $MT_ControlNode castable as xs:integer and  ( ( order &lt; 1 ) or ( order &gt; 2000 ) ) )  then  &quot;#ff0000&quot; else $MT_LabelTextColor"/>
+											</DesignEditField>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignTable id="774">
+						<style name="Table5" visible_x="$PERSISTENT/Root/mainView = &quot;order&quot;"/>
+						<children>
+							<DesignTableCol id="1453"/>
+							<DesignTableCol id="777">
+								<style colWidth="25%"/>
+							</DesignTableCol>
+							<DesignTableRow id="778">
+								<children>
+									<DesignButton id="1442">
+										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="8px" marginRight="8px" multiLine="1" name="Fill Backlog button" text="Fill Backlog" textColor_x="&apos;#ff0000&apos;" visible_x="($MT_CanvasX &gt; 750 or  $MT_Landscape = true() ) 
+and ($PERSISTENT/Root/PartList/row[1]/inventory &lt; 0 
+or $PERSISTENT/Root/PartList/row[2]/inventory &lt; 0 
+or $PERSISTENT/Root/PartList/row[3]/inventory &lt; 0 
+or $PERSISTENT/Root/PartList/row[4]/inventory &lt; 0 
+or $PERSISTENT/Root/PartList/row[5]/inventory &lt; 0 
+or $PERSISTENT/Root/PartList/row[6]/inventory &lt; 0 )" weight="1"/>
+										<controlActions id="1443">
+											<children>
+												<DesignActionGroupRef id="1804" groupRef="1805"/>
+												<DesignActionReloadData id="1449" reloadRef="1267"/>
+												<DesignActionUpdateNode id="2163" updAt="$PERSISTENT/Root/Score" resOf="$PERSISTENT/Root/Score - 5"/>
+												<DesignActionUpdateNode id="2180" updAt="$PERSISTENT/Root/fillCount" resOf="$PERSISTENT/Root/fillCount + 1"/>
+												<DesignActionGroupRef id="2326" groupRef="2162"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+									<DesignButton id="769">
+										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="4px" marginRight="4px" multiLine="1" name="Submit Order Button" text="Buy Parts" weight="1"/>
+										<controlActions id="770">
+											<children>
+												<DesignActionHideKeyboard id="1942"/>
+												<DesignActionUpdateNode id="2166" updAt="$PERSISTENT/Root/OrdersCount" resOf="$PERSISTENT/Root/OrdersCount +1"/>
+												<DesignActionGroupRef id="773" groupRef="303"/>
+												<DesignActionGroupRef id="1170" groupRef="710"/>
+												<DesignActionReloadData id="1171" reloadRef="1267"/>
+												<DesignActionCondition id="2167" condition="$PERSISTENT/Root/OrdersCount &gt; 1">
+													<children>
+														<DesignActionConditionTrue id="2168">
+															<children>
+																<DesignActionUpdateNode id="2169" updAt="$PERSISTENT/Root/Score" resOf="$PERSISTENT/Root/Score - 5"/>
+															</children>
+														</DesignActionConditionTrue>
+													</children>
+												</DesignActionCondition>
+												<DesignActionGroupRef id="2170" groupRef="2162"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignChart id="1267" chartSettings="874">
+						<style align="center" chartHeight_x="$MT_CanvasX div 3" chartWidth_x="$MT_CanvasX" createBeforeLoad="1" limitCtrlHeight="0" margin="0px" name="Inventory Levels Chart" visible_x="$PERSISTENT/Root/mainView = &quot;chart&quot;" width="fill_parent"/>
+						<controlActions id="176">
+							<children>
+								<DesignActionMessageBox id="2142" msgBoxMsg="&apos;Your goal is to maintain inventory of 50 - 200% of daily demand for each part for just-in-time production line efficiency.&apos;">
+									<children>
+										<DesignActionMessageBoxButton id="2143"/>
+									</children>
+								</DesignActionMessageBox>
+							</children>
+						</controlActions>
+					</DesignChart>
+					<DesignLabel id="1931">
+						<style align="left" margin="2px" marginBottom="4px" marginRight="10px" marginTop="0px" name="Demand Forecast Title" text="Morning Demand Forecast" underline="0" valign="bottom" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true() and $PERSISTENT/Root/mainView = &quot;forecast&quot;" weight="1"/>
+					</DesignLabel>
+					<DesignTable id="1500">
+						<style name="Table7" visible_x="( $MT_CanvasX &gt; 750 or  $MT_Landscape = true() ) and $PERSISTENT/Root/mainView = &quot;forecast&quot;"/>
+						<children>
+							<DesignTableCol id="1886">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableCol id="1896">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableCol id="1501">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableCol id="1924">
+								<style colWidth="fill_parent"/>
+							</DesignTableCol>
+							<DesignTableRow id="1502">
+								<children>
+									<DesignLabel id="1880">
+										<style align="left" margin="2px" marginBottom="0px" marginRight="10px" name="Performance Label3" text="Morning Demand Forecast" underline="0" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1895">
+										<style align="left" marginBottom="0px" name="Label8" text="for " valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="1503">
+										<style align="left" dtFormat="[M01]/[D01]/[Y0001]" marginBottom="0px" name="Label10" text_x="$PERSISTENT/Root/CurrentDate" textSize="medium" valign="bottom" weight="0"/>
+									</DesignLabel>
+									<DesignTableCellEmpty id="1923"/>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignTable id="1522">
+						<style align="right" name="Table8" visible_x="$PERSISTENT/Root/mainView = &quot;forecast&quot;"/>
+						<children>
+							<DesignTableCol id="1523">
+								<style colWidth="40%"/>
+							</DesignTableCol>
+							<DesignTableCol id="1524"/>
+							<DesignTableCol id="1525">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableRow id="1526">
+								<children>
+									<DesignLabel id="1527">
+										<style margin="2px" name="Label21" text="Product" underline="1" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1529">
+										<style align="right" margin="4px" name="Label22" text="Quantity" underline="1" weight="1"/>
+									</DesignLabel>
+									<DesignTableCellEmpty id="1531"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="1532" pageXML="1555">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="1533">
+										<children>
+											<DesignLabel id="1534" pageXML="1556">
+												<style margin="2px" name="Label26"/>
+											</DesignLabel>
+											<DesignLabel id="1536" pageXML="1557">
+												<style align="right" format="#,##0" margin="2px" name="Label27"/>
+											</DesignLabel>
+											<DesignTableCellEmpty id="1538"/>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignHLine id="1595">
+						<style marginBottom="2px" marginTop="2px" name="Horizontal Line4" visible_x="$PERSISTENT/Root/mainView = &quot;forecast&quot;"/>
+					</DesignHLine>
+					<DesignLabel id="1941">
+						<style align="left" margin="2px" marginBottom="4px" marginRight="10px" name="Month To  Date Sales Title" text="Month to Date Sales" underline="0" valign="bottom" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true() and $PERSISTENT/Root/mainView = &quot;forecast&quot;" weight="1"/>
+					</DesignLabel>
+					<DesignTable id="1599">
+						<style name="Table9" visible_x="( $MT_CanvasX &gt; 750 or  $MT_Landscape = true() ) and $PERSISTENT/Root/mainView = &quot;forecast&quot;"/>
+						<children>
+							<DesignTableCol id="1892">
+								<style colWidth="wrap_content"/>
+							</DesignTableCol>
+							<DesignTableCol id="1927">
+								<style colWidth="fill_parent"/>
+							</DesignTableCol>
+							<DesignTableRow id="1601">
+								<children>
+									<DesignLabel id="1884">
+										<style align="left" margin="2px" marginBottom="0px" marginRight="10px" name="Performance Label2" text="Month to Date Sales" underline="0" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignTableCellEmpty id="1928"/>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignTable id="1606">
+						<style align="right" name="Table10" visible_x="$PERSISTENT/Root/mainView = &quot;forecast&quot;"/>
+						<children>
+							<DesignTableCol id="1607">
+								<style colWidth="40%"/>
+							</DesignTableCol>
+							<DesignTableCol id="1608"/>
+							<DesignTableCol id="1609">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableRow id="1610">
+								<children>
+									<DesignLabel id="1611">
+										<style margin="2px" name="Label16" text="Product" underline="1" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1613">
+										<style align="right" margin="4px" name="Label17" text="Quantity" underline="1" weight="1"/>
+									</DesignLabel>
+									<DesignTableCellEmpty id="1615"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="1616" pageXML="157">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="1617">
+										<children>
+											<DesignLabel id="1618" pageXML="158">
+												<style margin="2px" name="Label18"/>
+											</DesignLabel>
+											<DesignLabel id="1620" pageXML="159">
+												<style align="right" format="#,##0" margin="2px" name="Label19"/>
+											</DesignLabel>
+											<DesignTableCellEmpty id="1622"/>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignTable id="2676">
+						<style name="Table12"/>
+						<children>
+							<DesignTableCol id="2708">
+								<style colWidth="10%"/>
+							</DesignTableCol>
+							<DesignTableCol id="2677"/>
+							<DesignTableCol id="2678"/>
+							<DesignTableRow id="2679">
+								<children>
+									<DesignButton id="2709">
+										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" name="Button4" text="&lt;" valign="middle" weight="1"/>
+										<controlActions id="2710">
+											<children>
+												<DesignActionWorkflowExecution id="2713" cancel="1"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+									<DesignButton id="1308">
+										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="20px" marginRight="20px" multiLine="1" name="BoM Button" text="Bills of Materials" valign="middle"/>
+										<controlActions id="1309">
+											<children>
+												<DesignActionGotoSubpage id="1312" pageRef="263"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+									<DesignButton id="2639">
+										<style backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" margin="10px" marginLeft="20px" marginRight="20px" name="Reset Data Button" text="Reset Data" valign="middle"/>
+										<controlActions id="2640">
+											<children>
+												<DesignActionMessageBox id="2697" msgBoxKind="okcancel" msgBoxMsg="&apos;This will reset all inventory data and restart the simulation for today.
+
+Are you sure?&apos;">
+													<children>
+														<DesignActionMessageBoxButton id="2698">
+															<children>
+																<DesignActionGroupRef id="2722" groupRef="2726"/>
+															</children>
+														</DesignActionMessageBoxButton>
+														<DesignActionMessageBoxButton id="2699"/>
+													</children>
+												</DesignActionMessageBox>
+											</children>
+										</controlActions>
+									</DesignButton>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+				</children>
+				<onPageLoadActions id="6">
+					<children>
+						<DesignActionGroupRef id="2464" groupRef="2462"/>
+					</children>
+				</onPageLoadActions>
+				<onPageRefreshActions id="137" refreshOnReopen="1" timerSeconds="(15 * 60)">
+					<children>
+						<DesignActionPageRefreshOnReopen id="1769"/>
+						<DesignActionGroupRef id="2486" groupRef="2462"/>
+					</children>
+				</onPageRefreshActions>
+				<xmlRoots>
+					<PageXMLRootRef id="150" refXMLRoot="152"/>
+					<PageXMLRootRef id="1220" refXMLRoot="1221"/>
+					<PageXMLRootRef id="1551" refXMLRoot="1552"/>
+					<PageXMLRootRef id="1560" refXMLRoot="1561"/>
+				</xmlRoots>
+			</DesignPage>
+			<DesignPage id="263" subPage="1">
+				<style name="BOM"/>
+				<children>
+					<DesignLabel id="264">
+						<style align="center" margin="4px" name="Label1" text="Bills of Materials" textSize="large" weight="1"/>
+					</DesignLabel>
+					<DesignLabel id="611">
+						<style margin="4px" marginBottom="6px" marginTop="12px" name="Label2" text="Products by Sub-Assembly:" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+					</DesignLabel>
+					<DesignHLine id="613">
+						<style name="Horizontal Line1" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+					</DesignHLine>
+					<DesignTable id="524">
+						<style name="Table1" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+						<children>
+							<DesignTableCol id="525"/>
+							<DesignTableRow id="527">
+								<children>
+									<DesignTable id="528">
+										<style name="Table2"/>
+										<children>
+											<DesignTableCol id="529">
+												<style colWidth="30%"/>
+											</DesignTableCol>
+											<DesignTableCol id="811">
+												<style colWidth="20%"/>
+											</DesignTableCol>
+											<DesignTableCol id="530"/>
+											<DesignTableRow id="532">
+												<children>
+													<DesignLabel id="520">
+														<style margin="4px" name="Label8" text="Product" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+													</DesignLabel>
+													<DesignLabel id="796">
+														<style align="center" margin="4px" name="Label10" text="Quantity" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+													</DesignLabel>
+													<DesignLabel id="521">
+														<style margin="4px" name="Label9" text="Assembly / Part" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+													</DesignLabel>
+												</children>
+											</DesignTableRow>
+											<DesignTableRowGroup id="542" pageXML="554">
+												<style addDelPossible="0"/>
+												<children>
+													<DesignTableRow id="543">
+														<children>
+															<DesignLabel id="544" pageXML="555">
+																<style margin="4px" name="Label5" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+															</DesignLabel>
+															<DesignLabel id="798" pageXML="557">
+																<style align="center" margin="4px" name="Label7" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+															</DesignLabel>
+															<DesignLabel id="546" pageXML="556">
+																<style align="left" margin="4px" name="Label6" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+															</DesignLabel>
+														</children>
+													</DesignTableRow>
+												</children>
+											</DesignTableRowGroup>
+										</children>
+									</DesignTable>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignHLine id="564">
+						<style name="Horizontal Line2" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+					</DesignHLine>
+					<DesignLabel id="459">
+						<style margin="4px" marginBottom="6px" marginTop="12px" name="Label3" text="Products by Complete Parts List:" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+					</DesignLabel>
+					<DesignHLine id="636">
+						<style name="Horizontal Line3" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+					</DesignHLine>
+					<DesignTable id="566">
+						<style name="Table3" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+						<children>
+							<DesignTableCol id="567">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableCol id="816">
+								<style colWidth="20%"/>
+							</DesignTableCol>
+							<DesignTableCol id="568"/>
+							<DesignTableRow id="570">
+								<children>
+									<DesignLabel id="571">
+										<style margin="4px" name="Label11" text="Product" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="801">
+										<style align="center" margin="4px" name="Label13" text="Quantity" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="573">
+										<style margin="4px" name="Label12" text="Part" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="577" pageXML="604">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="578">
+										<children>
+											<DesignLabel id="579" pageXML="605">
+												<style margin="4px" name="Label14" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+											</DesignLabel>
+											<DesignLabel id="803" pageXML="607">
+												<style align="center" margin="4px" name="Label16" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+											</DesignLabel>
+											<DesignLabel id="581" pageXML="606">
+												<style margin="4px" name="Label15" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+											</DesignLabel>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignHLine id="660">
+						<style name="Horizontal Line4" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+					</DesignHLine>
+					<DesignLabel id="585">
+						<style margin="4px" marginBottom="6px" marginTop="12px" name="Label4" text="Parts by Where Used:" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+					</DesignLabel>
+					<DesignHLine id="662">
+						<style name="Horizontal Line5" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+					</DesignHLine>
+					<DesignTable id="615">
+						<style name="Table4" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+						<children>
+							<DesignTableCol id="616">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableCol id="821">
+								<style colWidth="20%"/>
+							</DesignTableCol>
+							<DesignTableCol id="617"/>
+							<DesignTableRow id="619">
+								<children>
+									<DesignLabel id="620">
+										<style margin="4px" name="Label17" text="Part" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="806">
+										<style align="center" margin="4px" name="Label19" text="Quantity" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="622">
+										<style margin="4px" name="Label18" text="Used In" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="626" pageXML="653">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="627">
+										<children>
+											<DesignLabel id="628" pageXML="654">
+												<style margin="4px" name="Label20"/>
+											</DesignLabel>
+											<DesignLabel id="808" pageXML="656">
+												<style align="center" margin="4px" name="Label22"/>
+											</DesignLabel>
+											<DesignLabel id="630" pageXML="655">
+												<style margin="4px" name="Label21"/>
+											</DesignLabel>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignHLine id="664">
+						<style name="Horizontal Line6" visible_x="$MT_CanvasX &gt; 750 or  $MT_Landscape = true()"/>
+					</DesignHLine>
+					<DesignLabel id="1320">
+						<style margin="4px" marginBottom="6px" marginTop="12px" name="Label23" text="Products by Sub-Assembly:" textSize="small" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()" weight="1"/>
+					</DesignLabel>
+					<DesignHLine id="1322">
+						<style name="Horizontal Line7" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+					</DesignHLine>
+					<DesignTable id="1324">
+						<style name="Table5" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+						<children>
+							<DesignTableCol id="1325"/>
+							<DesignTableRow id="1326">
+								<children>
+									<DesignTable id="1327">
+										<style name="Table6"/>
+										<children>
+											<DesignTableCol id="1328">
+												<style colWidth="30%"/>
+											</DesignTableCol>
+											<DesignTableCol id="1329">
+												<style colWidth="20%"/>
+											</DesignTableCol>
+											<DesignTableCol id="1330"/>
+											<DesignTableRow id="1331">
+												<children>
+													<DesignLabel id="1332">
+														<style margin="4px" name="Label24" text="Product" textSize="small" weight="1"/>
+													</DesignLabel>
+													<DesignLabel id="1334">
+														<style align="center" margin="4px" name="Label25" text="Quantity" textSize="small" weight="1"/>
+													</DesignLabel>
+													<DesignLabel id="1336">
+														<style margin="4px" name="Label26" text="Assembly / Part" textSize="small" weight="1"/>
+													</DesignLabel>
+												</children>
+											</DesignTableRow>
+											<DesignTableRowGroup id="1338" pageXML="554">
+												<style addDelPossible="0"/>
+												<children>
+													<DesignTableRow id="1339">
+														<children>
+															<DesignLabel id="1340" pageXML="555">
+																<style margin="4px" name="Label27" textSize="small"/>
+															</DesignLabel>
+															<DesignLabel id="1342" pageXML="557">
+																<style align="center" margin="4px" name="Label28" textSize="small"/>
+															</DesignLabel>
+															<DesignLabel id="1344" pageXML="556">
+																<style align="left" margin="4px" name="Label29" textSize="small"/>
+															</DesignLabel>
+														</children>
+													</DesignTableRow>
+												</children>
+											</DesignTableRowGroup>
+										</children>
+									</DesignTable>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignHLine id="1346">
+						<style name="Horizontal Line8" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+					</DesignHLine>
+					<DesignLabel id="1348">
+						<style margin="4px" marginBottom="6px" marginTop="12px" name="Label30" text="Products by Complete Parts List:" textSize="small" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()" weight="1"/>
+					</DesignLabel>
+					<DesignHLine id="1350">
+						<style name="Horizontal Line9" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+					</DesignHLine>
+					<DesignTable id="1352">
+						<style name="Table7" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+						<children>
+							<DesignTableCol id="1353">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableCol id="1354">
+								<style colWidth="20%"/>
+							</DesignTableCol>
+							<DesignTableCol id="1355"/>
+							<DesignTableRow id="1356">
+								<children>
+									<DesignLabel id="1357">
+										<style margin="4px" name="Label31" text="Product" textSize="small" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1359">
+										<style align="center" margin="4px" name="Label32" text="Quantity" textSize="small" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1361">
+										<style margin="4px" name="Label33" text="Part" textSize="small" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="1363" pageXML="604">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="1364">
+										<children>
+											<DesignLabel id="1365" pageXML="605">
+												<style margin="4px" name="Label34" textSize="small"/>
+											</DesignLabel>
+											<DesignLabel id="1367" pageXML="607">
+												<style align="center" margin="4px" name="Label35" textSize="small"/>
+											</DesignLabel>
+											<DesignLabel id="1369" pageXML="606">
+												<style margin="4px" name="Label36" textSize="small"/>
+											</DesignLabel>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignHLine id="1371">
+						<style name="Horizontal Line10" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+					</DesignHLine>
+					<DesignLabel id="1373">
+						<style margin="4px" marginBottom="6px" marginTop="12px" name="Label37" text="Parts by Where Used:" textSize="small" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()" weight="1"/>
+					</DesignLabel>
+					<DesignHLine id="1375">
+						<style name="Horizontal Line11" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+					</DesignHLine>
+					<DesignTable id="1377">
+						<style name="Table8" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+						<children>
+							<DesignTableCol id="1378">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableCol id="1379">
+								<style colWidth="20%"/>
+							</DesignTableCol>
+							<DesignTableCol id="1380"/>
+							<DesignTableRow id="1381">
+								<children>
+									<DesignLabel id="1382">
+										<style margin="4px" name="Label38" text="Part" textSize="small" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1384">
+										<style align="center" margin="4px" name="Label39" text="Quantity" textSize="small" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="1386">
+										<style margin="4px" name="Label40" text="Used In" textSize="small" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRowGroup id="1388" pageXML="653">
+								<style addDelPossible="0"/>
+								<children>
+									<DesignTableRow id="1389">
+										<children>
+											<DesignLabel id="1390" pageXML="654">
+												<style margin="4px" name="Label41" textSize="small"/>
+											</DesignLabel>
+											<DesignLabel id="1392" pageXML="656">
+												<style align="center" margin="4px" name="Label42" textSize="small"/>
+											</DesignLabel>
+											<DesignLabel id="1394" pageXML="655">
+												<style margin="4px" name="Label43" textSize="small"/>
+											</DesignLabel>
+										</children>
+									</DesignTableRow>
+								</children>
+							</DesignTableRowGroup>
+						</children>
+					</DesignTable>
+					<DesignHLine id="1396">
+						<style name="Horizontal Line12" visible_x="$MT_CanvasX &lt; 751 and  $MT_Portrait = true()"/>
+					</DesignHLine>
+				</children>
+				<onBackButtonActions id="445">
+					<children>
+						<DesignActionReturnFromSubpage id="2471"/>
+					</children>
+				</onBackButtonActions>
+				<xmlRoots>
+					<PageXMLRootRef id="551" refXMLRoot="552"/>
+					<PageXMLRootRef id="601" refXMLRoot="602"/>
+					<PageXMLRootRef id="650" refXMLRoot="651"/>
+				</xmlRoots>
+			</DesignPage>
+			<DesignPage id="883">
+				<style name="Intro"/>
+				<children>
+					<DesignTable id="914">
+						<style name="Table1"/>
+						<children>
+							<DesignTableCol id="915"/>
+							<DesignTableRow id="923">
+								<children>
+									<DesignLabel id="922">
+										<style align="center" marginBottom="5px" marginTop="5px" name="Intro Page Main Title Label" text="Parts Inventory Manager" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="927">
+								<children>
+									<DesignLabel id="928">
+										<style marginBottom="5px" marginTop="5px" multiLine="1" name="Solution Description Label" text="This is a companion to the Company Sales solution, providing a tool for the manufacturing manager to monitor inventory and buy components to build products as new orders arrive."/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="918">
+								<children>
+									<DesignTableCellEmpty id="919"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="955">
+								<children>
+									<DesignButton id="956">
+										<style align="center" marginBottom="5px" name="Show More Buton" text="more . . ." visible_x="$PERSISTENT/Root/ShowMore = &apos;false&apos;"/>
+										<controlActions id="957">
+											<children>
+												<DesignActionUpdateNode id="960" updAt="$PERSISTENT/Root/ShowMore" resOf="&apos;true&apos;"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="935">
+								<children>
+									<DesignLabel id="932">
+										<style marginBottom="5px" marginTop="5px" multiLine="1" name="Solution Description Label 2" text="As inventory manager, your assignment is to maintain a smooth just-in-time flow of components to the production line. Specifically, your goal is to maintain inventory of each component between 50% and 200% of average daily demand. Order the parts you need for the day&apos;s production forecast, then click Advance Clock to watch orders arrive." underline="0" visible_x="$PERSISTENT/Root/ShowMore = &apos;true&apos;"/>
+										<controlActions id="944">
+											<children>
+												<DesignActionUpdateNode id="965" updAt="$PERSISTENT/Root/ShowMore" resOf="&apos;false&apos;"/>
+											</children>
+										</controlActions>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="945">
+								<children>
+									<DesignTableCellEmpty id="946"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="947">
+								<children>
+									<DesignLabel id="937">
+										<style marginBottom="5px" marginTop="5px" multiLine="1" name="Solution Description Label 3" text="If you purchase too many of any item, you commit too much capital and have no warehouse space to store unneeded components. If you purchase too few, the company either cannot deliver orders and collect revenue, or must pay overtime on the production floor to catch up later." underline="0" visible_x="$PERSISTENT/Root/ShowMore = &apos;true&apos;"/>
+										<controlActions id="938">
+											<children>
+												<DesignActionUpdateNode id="964" updAt="$PERSISTENT/Root/ShowMore" resOf="&apos;false&apos;"/>
+											</children>
+										</controlActions>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="948">
+								<children>
+									<DesignTableCellEmpty id="949"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="950">
+								<children>
+									<DesignLabel id="942">
+										<style marginBottom="5px" marginTop="5px" multiLine="1" name="Solution Description Label 4" text="You can start fresh with a baseline inventory to build 50 of each product. Average daily demand for each component is based on sales so far during that month and becomes a more accurate predictor as more days pass." underline="0" visible_x="$PERSISTENT/Root/ShowMore = &apos;true&apos;"/>
+										<controlActions id="943">
+											<children>
+												<DesignActionUpdateNode id="1960" updAt="$PERSISTENT/Root/ShowMore" resOf="&apos;false&apos;"/>
+											</children>
+										</controlActions>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="953">
+								<children>
+									<DesignTableCellEmpty id="954"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2613">
+								<children>
+									<DesignLabel id="2607">
+										<style marginBottom="5px" marginTop="5px" multiLine="1" name="Solution Description Label 5" text="After all the orders for the day have arrived, click Evaluate Performance to see how well you managed inventory for the day. If you&apos;re not satisfied and want to try again, click Reset Data to start the day over again." underline="0" visible_x="$PERSISTENT/Root/ShowMore = &apos;true&apos;"/>
+										<controlActions id="2608">
+											<children>
+												<DesignActionUpdateNode id="2611" updAt="$PERSISTENT/Root/ShowMore" resOf="&apos;false&apos;"/>
+											</children>
+										</controlActions>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="967">
+								<children>
+									<DesignTableCellEmpty id="2612"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="971">
+								<children>
+									<DesignTableCellEmpty id="972"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="916">
+								<children>
+									<DesignCheckBox id="912" pageXML="892">
+										<style margin="5px" multiLine="1" name="Skip Intro Check Box" text="  Skip this intro in the future"/>
+									</DesignCheckBox>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="920">
+								<children>
+									<DesignTableCellEmpty id="921"/>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="917">
+								<children>
+									<DesignButton id="907">
+										<style align="center" margin="4px" marginTop="10px" multiLine="1" name="Launch First Top Page Button" text="Next Page" weight="1"/>
+										<controlActions id="908">
+											<children>
+												<DesignActionGotoPage id="911" processRef="13"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+				</children>
+				<onPageLoadActions id="887">
+					<children>
+						<DesignActionUpdateNode id="979" updAt="$PERSISTENT/Root/ShowMore" resOf="&apos;false&apos;"/>
+						<DesignActionCondition id="980" condition="$PERSISTENT/Root/SkipIntro = true()">
+							<children>
+								<DesignActionConditionTrue id="981">
+									<children>
+										<DesignActionGotoPage id="982" processRef="13"/>
+									</children>
+								</DesignActionConditionTrue>
+							</children>
+						</DesignActionCondition>
+					</children>
+				</onPageLoadActions>
+			</DesignPage>
+			<DesignPage id="2196" subPage="1">
+				<style name="Performance Evaluation"/>
+				<children>
+					<DesignTable id="2197">
+						<style name="Table1"/>
+						<children>
+							<DesignTableCol id="2198">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableCol id="2199"/>
+							<DesignTableCol id="2200">
+								<style colWidth="30%"/>
+							</DesignTableCol>
+							<DesignTableCol id="2201"/>
+							<DesignTableRow id="2202">
+								<children>
+									<DesignLabel id="2193">
+										<style multiLine="1" name="Label1" text="Perfect Score:" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="2191">
+										<style align="center" name="Label2" text="200" textSize="large" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2194">
+										<style multiLine="1" name="Label3" text="Your score:" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignLabel id="2195">
+										<style align="center" name="Label4" text_x="$PERSISTENT/Root/Score" textColor_x="if  ( $PERSISTENT/Root/Score &lt; 175 )  then &quot;#ff0000&quot; else $MT_LabelTextColor" textSize="large" valign="bottom" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignVSpace id="2325">
+						<style name="Space1" spaceHeight="5px"/>
+					</DesignVSpace>
+					<DesignTable id="2230">
+						<style name="Table2"/>
+						<children>
+							<DesignTableCol id="2231">
+								<style colWidth="50%"/>
+							</DesignTableCol>
+							<DesignTableCol id="2232"/>
+							<DesignTableCol id="2233"/>
+							<DesignTableRow id="2234">
+								<children>
+									<DesignLabel id="2313">
+										<style marginTop="4px" multiLine="1" name="Label21" text="Your activity" valign="bottom" weight="1"/>
+									</DesignLabel>
+									<DesignTableCellEmpty id="2236">
+										<style valign="bottom"/>
+									</DesignTableCellEmpty>
+									<DesignLabel id="2237">
+										<style align="right" marginTop="4px" multiLine="1" name="Label5" text="Points lost" valign="bottom" weight="1"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2241">
+								<children>
+									<DesignLabel id="2242">
+										<style marginTop="4px" multiLine="1" name="Label6" text="Orders placed" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2246" pageXML="2145">
+										<style align="center" marginTop="4px" name="Label7" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2250">
+										<style align="right" marginTop="4px" name="Label8" text_x="if ( $PERSISTENT/Root/OrdersCount = 0 ) then 0 else ($PERSISTENT/Root/OrdersCount - 1) * ( 5 )" textColor_x="if  (  $PERSISTENT/Root/OrdersCount  &gt; 1 )  then &quot;#ff0000&quot; else $MT_LabelTextColor" valign="bottom"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2254">
+								<children>
+									<DesignLabel id="2255">
+										<style marginTop="4px" multiLine="1" name="Label9" text="Inventory readings above target" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2228" pageXML="2185">
+										<style align="center" marginTop="4px" name="Label10" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2229">
+										<style align="right" marginTop="4px" name="Label11" text_x="$PERSISTENT/Root/aboveTarget * (2)" textColor_x="if  (  $PERSISTENT/Root/aboveTarget  &gt; 0 )  then &quot;#ff0000&quot; else $MT_LabelTextColor" valign="bottom"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2265">
+								<children>
+									<DesignLabel id="2281">
+										<style marginTop="4px" multiLine="1" name="Label12" text="Inventory readings below target" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2277" pageXML="2186">
+										<style align="center" marginTop="4px" name="Label13" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2279">
+										<style align="right" marginTop="4px" name="Label14" text_x="$PERSISTENT/Root/belowTarget * (4)" textColor_x="if  (  $PERSISTENT/Root/belowTarget  &gt; 0 )  then &quot;#ff0000&quot; else $MT_LabelTextColor" valign="bottom"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2269">
+								<children>
+									<DesignLabel id="2291">
+										<style marginTop="4px" multiLine="1" name="Label15" text="Inventory readings below zero" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2278" pageXML="2187">
+										<style align="center" marginTop="4px" name="Label16" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2298">
+										<style align="right" marginTop="4px" name="Label17" text_x="$PERSISTENT/Root/belowZero * (10)" textColor_x="if  (  $PERSISTENT/Root/belowZero &gt; 0 )  then &quot;#ff0000&quot; else $MT_LabelTextColor" valign="bottom"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2273">
+								<children>
+									<DesignLabel id="2302">
+										<style marginTop="4px" multiLine="1" name="Label18" text="Emergency backlog orders" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2280" pageXML="2188">
+										<style align="center" marginTop="4px" name="Label19" valign="bottom"/>
+									</DesignLabel>
+									<DesignLabel id="2309">
+										<style align="right" marginTop="4px" name="Label20" text_x="$PERSISTENT/Root/fillCount * (5)" textColor_x="if  (  $PERSISTENT/Root/fillCount  &gt; 0 )  then &quot;#ff0000&quot; else $MT_LabelTextColor" valign="bottom"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+					<DesignLabel id="2327">
+						<style align="center" marginTop="15px" multiLine="1" name="Label22" text="You did a fantastic job today!" textColor="green" textSize="large" visible_x="$PERSISTENT/Root/Score &gt; 189" weight="1"/>
+					</DesignLabel>
+					<DesignLabel id="2341">
+						<style align="center" marginTop="15px" multiLine="1" name="Label26" text="You did a good job today." textColor="green" textSize="large" visible_x="( $PERSISTENT/Root/Score &gt; 174 ) and ( $PERSISTENT/Root/Score &lt; 190 )" weight="1"/>
+					</DesignLabel>
+					<DesignLabel id="2330">
+						<style align="center" marginTop="15px" multiLine="1" name="Label23" text="You did an adequate job today." textColor_x="$MT_LabelTextColor" textSize="large" visible_x="( $PERSISTENT/Root/Score &gt; 149 ) and ( $PERSISTENT/Root/Score &lt; 175 )" weight="1"/>
+					</DesignLabel>
+					<DesignLabel id="2334">
+						<style align="center" marginTop="15px" multiLine="1" name="Label24" text="You did a sub-standard job today." textColor_x="$MT_LabelTextColor" textSize="large" visible_x="( $PERSISTENT/Root/Score &lt; 150 ) and ( $PERSISTENT/Root/Score &gt; 99 )" weight="1"/>
+					</DesignLabel>
+					<DesignLabel id="2338">
+						<style align="center" marginTop="15px" multiLine="1" name="Label25" text="You did a terrible job today!" textColor="red" textSize="large" visible_x="( $PERSISTENT/Root/Score &lt; 100 )" weight="1"/>
+					</DesignLabel>
+				</children>
+				<onPageRefreshActions id="593" refreshOnReopen="1">
+					<children>
+						<DesignActionPageRefreshOnReopen id="2485"/>
+					</children>
+				</onPageRefreshActions>
+				<onBackButtonActions id="2220">
+					<children>
+						<DesignActionReturnFromSubpage id="2479"/>
+					</children>
+				</onBackButtonActions>
+			</DesignPage>
+		</children>
+	</DesignRoot>
+	<ActionGroupRoot id="10">
+		<children>
+			<DesignActionGroup id="2462" name="Page Load / Reload Actions">
+				<children>
+					<DesignActionComment id="2553" comment="For testing and debugging you can hard-code these dates to simulate various days"/>
+					<DesignActionUpdateNode id="2554" actionEnabled="0" updAt="$PERSISTENT/Root/LastRunDate" resOf="&apos;2015-07-06&apos;"/>
+					<DesignActionUpdateNode id="2555" actionEnabled="0" updAt="$PERSISTENT/Root/CurrentDate" resOf="&apos;2015-08-10&apos;"/>
+					<DesignActionUpdateNode id="2689" updAt="$PERSISTENT/Root/mainView" resOf="&quot;order&quot;"/>
+					<DesignActionUpdateNode id="2558" updAt="$PERSISTENT/Root/CurrentDate" resOf="current-date-no-TZ()"/>
+					<DesignActionComment id="2556" comment="End of test section - when test is complete, disable the first two above actions and enable the third"/>
+					<DesignActionGroupRef id="2450" groupRef="1996"/>
+					<DesignActionGroupRef id="2451" groupRef="72"/>
+					<DesignActionCondition id="2452" condition="$PERSISTENT/Root/initNewMonth = &apos;true&apos;">
+						<children>
+							<DesignActionConditionTrue id="2453">
+								<children>
+									<DesignActionGroupRef id="2454" groupRef="1661"/>
+									<DesignActionUpdateNode id="2455" updAt="$PERSISTENT/Root/initNewMonth" resOf="&apos;false&apos;"/>
+								</children>
+							</DesignActionConditionTrue>
+						</children>
+					</DesignActionCondition>
+					<DesignActionReloadData id="2456" reloadRef="152"/>
+					<DesignActionGroupRef id="2457" groupRef="1728"/>
+					<DesignActionGroupRef id="2458" groupRef="710"/>
+					<DesignActionHideKeyboard id="2459"/>
+					<DesignActionReloadData id="2460" reloadRef="1267"/>
+					<DesignActionCondition id="2752" condition="$PERSISTENT/Root/CurrentDate &gt; add-days-to-date( $PERSISTENT/Root/LastRunDate ,  1 )">
+						<children>
+							<DesignActionConditionTrue id="2753">
+								<children>
+									<DesignActionGroupRef id="2756" groupRef="2726"/>
+								</children>
+							</DesignActionConditionTrue>
+						</children>
+					</DesignActionCondition>
+					<DesignActionUpdateNode id="2757" updAt="$PERSISTENT/Root/LastRunDate" resOf="$PERSISTENT/Root/CurrentDate"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="1996" name="Test New Day">
+				<children>
+					<DesignActionCondition id="1997" condition="$PERSISTENT/Root/CurrentDate &gt; $PERSISTENT/Root/LastRunDate">
+						<children>
+							<DesignActionConditionTrue id="1998">
+								<children>
+									<DesignActionGroupRef id="2447" groupRef="2184"/>
+									<DesignActionUpdateNode id="1999" updAt="$PERSISTENT/Root/SimTime" resOf="0500"/>
+								</children>
+							</DesignActionConditionTrue>
+						</children>
+					</DesignActionCondition>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="72" name="Test New Month">
+				<children>
+					<DesignActionComment id="64" comment="This will be run at each launch to determine whether to initialze a new month inventory"/>
+					<DesignActionComment id="73" comment="And record the last local user run date"/>
+					<DesignActionCondition id="379" condition="(month-from-date( $PERSISTENT/Root/CurrentDate ) ne month-from-date( $PERSISTENT/Root/LastRunDate ))
+or
+(year-from-date( $PERSISTENT/Root/CurrentDate ) ne year-from-date( $PERSISTENT/Root/LastRunDate ))">
+						<children>
+							<DesignActionConditionTrue id="380">
+								<children>
+									<DesignActionUpdateNode id="375" updAt="$PERSISTENT/Root/initNewMonth" resOf="&apos;true&apos;"/>
+								</children>
+							</DesignActionConditionTrue>
+							<DesignActionConditionFalse id="381">
+								<children>
+									<DesignActionUpdateNode id="377" updAt="$PERSISTENT/Root/initNewMonth" resOf="&apos;false&apos;"/>
+								</children>
+							</DesignActionConditionFalse>
+						</children>
+					</DesignActionCondition>
+					<DesignActionUpdateNode id="378" actionEnabled="0" updAt="$PERSISTENT/Root/LastRunDate" resOf="$PERSISTENT/Root/CurrentDate"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="1661" name="New Month Parts Table">
+				<children>
+					<DesignActionLoop id="1657" varName="i" forEach="( 2 to $PERSISTENT/Root/PartNumbersCount  )">
+						<children>
+							<DesignActionCondition id="1684" condition="$PERSISTENT/Root/PartList/row[2]">
+								<children>
+									<DesignActionConditionTrue id="1685">
+										<children>
+											<DesignActionDeleteNode id="1683" delAt="$PERSISTENT/Root/PartList/row[2]"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+						</children>
+					</DesignActionLoop>
+					<DesignActionUpdateNode id="1743" updAt="$PERSISTENT/Root/PartList/row[1]/received" resOf="50"/>
+					<DesignActionUpdateNode id="1742" updAt="$PERSISTENT/Root/PartList/row[1]/used" resOf="0"/>
+					<DesignActionUpdateNode id="1741" updAt="$PERSISTENT/Root/PartList/row[1]/inventory" resOf="50"/>
+					<DesignActionUpdateNode id="1740" updAt="$PERSISTENT/Root/PartList/row[1]/order" resOf="&apos;&apos;"/>
+					<DesignActionUpdateNode id="1739" updAt="$PERSISTENT/Root/PartList/row[1]/avgdemand" resOf="0"/>
+					<DesignActionUpdateNode id="1738" updAt="$PERSISTENT/Root/PartList/row[1]/inventory_status" resOf="4"/>
+					<DesignActionLoop id="1678" varName="i" forEach="( 2 to $PERSISTENT/Root/PartNumbersCount  )">
+						<children>
+							<DesignActionAppendNode id="1679" appAt="$PERSISTENT/Root/PartList" resOf="$PERSISTENT/Root/PartList/row[1]"/>
+						</children>
+					</DesignActionLoop>
+					<DesignActionLoop id="1732" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount  )">
+						<children>
+							<DesignActionUpdateNode id="1734" updAt="$PERSISTENT/Root/PartList/row[$i]/name" resOf="switch ( $i )
+	case 1 return &apos;BuildKitGA&apos;
+    case 2 return &apos;BuildKitGZ&apos;
+    case 3 return &apos;BuildKitSP&apos;
+    case 4 return&apos;BuildKitTJ&apos;
+    case 5 return &apos;BuildKitWG&apos;
+    case 6 return &apos;Connector&apos;
+	default return concat(&apos;Unknown00&apos;,string( $i - 6 ))"/>
+							<DesignActionUpdateNode id="1735" updAt="$PERSISTENT/Root/PartList/row[$i]/received" resOf="switch ( $i )
+ case 3 return &apos;300&apos;
+ case 5 return&apos;200&apos;
+ case 6 return &apos;750&apos;
+ default return &apos;50&apos;"/>
+							<DesignActionUpdateNode id="1736" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="$PERSISTENT/Root/PartList/row[$i]/received"/>
+						</children>
+					</DesignActionLoop>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="1728" name="Populate Parts Table">
+				<children>
+					<DesignActionReloadData id="1709" reloadRef="152"/>
+					<DesignActionLoop id="1758" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount  )">
+						<children>
+							<DesignActionUpdateNode id="1759" updAt="$PERSISTENT/Root/PartList/row[$i]/used" resOf="switch ($i)
+case 1 return CurrBuildKitGAused()
+case 2 return CurrBuildKitGZused()
+case 3 return CurrBuildKitSPused()
+case 4 return CurrBuildKitTJused()
+case 5 return CurrBuildKitWGused()
+case 6 return CurrConnectorUsed()
+default return 0"/>
+							<DesignActionUpdateNode id="1760" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="switch ($i)
+case 1 return CurrBuildKitGAinv()
+case 2 return CurrBuildKitGZinv()
+case 3 return CurrBuildKitSPinv()
+case 4 return CurrBuildKitTJinv()
+case 5 return CurrBuildKitWGinv()
+case 6 return CurrConnectorInv()
+default return 0"/>
+						</children>
+					</DesignActionLoop>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="710" name="Populate Avg Demand">
+				<children>
+					<DesignActionLoop id="730" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount  )">
+						<children>
+							<DesignActionUpdateNode id="2384" updAt="$PERSISTENT/Root/tempHold" resOf="switch ( $i )
+ case 3 return &apos;300&apos;
+ case 5 return&apos;200&apos;
+ case 6 return &apos;750&apos;
+ default return &apos;50&apos;"/>
+							<DesignActionUpdateNode id="731" updAt="$PERSISTENT/Root/PartList/row[$i]/avgdemand" resOf="if ( $PERSISTENT/Root/PartList/row[$i]/used =&apos;&apos; or  $PERSISTENT/Root/PartList/row[$i]/used &lt;  $PERSISTENT/Root/tempHold ) 
+  then $PERSISTENT/Root/tempHold 
+  else ($PERSISTENT/Root/PartList/row[$i]/used  ) div day-from-date( $PERSISTENT/Root/CurrentDate )"/>
+							<DesignActionCondition id="1787" condition="$PERSISTENT/Root/PartList/row[$i]/avgdemand &gt; 0">
+								<children>
+									<DesignActionConditionTrue id="1788">
+										<children>
+											<DesignActionUpdateNode id="1785" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory_status" resOf="( $PERSISTENT/Root/PartList/row[$i]/inventory) div ($PERSISTENT/Root/PartList/row[$i]/avgdemand )"/>
+										</children>
+									</DesignActionConditionTrue>
+									<DesignActionConditionFalse id="1789">
+										<children>
+											<DesignActionUpdateNode id="1786" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory_status" resOf="10"/>
+										</children>
+									</DesignActionConditionFalse>
+								</children>
+							</DesignActionCondition>
+						</children>
+					</DesignActionLoop>
+					<DesignActionComment id="2533" comment="Special case where date &lt; 8 and we want to fill avgdemand with forecast"/>
+					<DesignActionUpdateNode id="2498" updAt="$PERSISTENT/Root/tempHold" resOf="$PERSISTENT/Root/SimTime"/>
+					<DesignActionCondition id="2499" condition="day-from-date( $PERSISTENT/Root/CurrentDate ) &lt; 8">
+						<children>
+							<DesignActionConditionTrue id="2500">
+								<children>
+									<DesignActionUpdateNode id="2501" updAt="$PERSISTENT/Root/SimTime" resOf="&apos;2359&apos;"/>
+									<DesignActionReloadData id="2536" reloadRef="152"/>
+									<DesignActionUpdateNode id="2537" updAt="$PERSISTENT/Root/SimTime" resOf="$PERSISTENT/Root/tempHold"/>
+								</children>
+							</DesignActionConditionTrue>
+						</children>
+					</DesignActionCondition>
+					<DesignActionComment id="2548" comment="End of special case"/>
+					<DesignActionLoop id="2545" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount  )">
+						<children>
+							<DesignActionUpdateNode id="2546" updAt="$PERSISTENT/Root/PartList/row[$i]/avgdemand" resOf="switch ( $i )
+ case 1 return CurrBuildKitGAused() div day-from-date( $PERSISTENT/Root/CurrentDate )
+ case 2 return CurrBuildKitGZused() div day-from-date( $PERSISTENT/Root/CurrentDate )
+ case 3 return CurrBuildKitSPused() div day-from-date( $PERSISTENT/Root/CurrentDate )
+ case 4 return CurrBuildKitTJused() div day-from-date( $PERSISTENT/Root/CurrentDate )
+ case 5 return CurrBuildKitWGused() div day-from-date( $PERSISTENT/Root/CurrentDate )
+ case 6 return CurrConnectorUsed() div day-from-date( $PERSISTENT/Root/CurrentDate )
+ default return &apos;100&apos;"/>
+							<DesignActionUpdateNode id="2547" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory_status" resOf="( $PERSISTENT/Root/PartList/row[$i]/inventory) div ($PERSISTENT/Root/PartList/row[$i]/avgdemand )"/>
+						</children>
+					</DesignActionLoop>
+					<DesignActionReloadData id="1638" reloadRef="1552"/>
+					<DesignActionReloadData id="1637" reloadRef="1561"/>
+					<DesignActionReloadData id="1230" reloadRef="1221"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="1805" name="Fill Backlog">
+				<children>
+					<DesignActionLoop id="1791" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+						<children>
+							<DesignActionCondition id="1792" condition="$PERSISTENT/Root/PartList/row[$i]/inventory &lt; 0">
+								<children>
+									<DesignActionConditionTrue id="1793">
+										<children>
+											<DesignActionUpdateNode id="1794" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="abs( $PERSISTENT/Root/PartList/row[$i]/inventory )"/>
+										</children>
+									</DesignActionConditionTrue>
+									<DesignActionConditionFalse id="1795">
+										<children>
+											<DesignActionUpdateNode id="1796" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="0"/>
+										</children>
+									</DesignActionConditionFalse>
+								</children>
+							</DesignActionCondition>
+						</children>
+					</DesignActionLoop>
+					<DesignActionComment id="1797" comment="Update Parts List"/>
+					<DesignActionLoop id="1798" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+						<children>
+							<DesignActionUpdateNode id="1799" updAt="$PERSISTENT/Root/PartList/row[$i]/received" resOf="( $PERSISTENT/Root/PartList/row[$i]/received + $PERSISTENT/Root/PartList/row[$i]/order ) div 1"/>
+							<DesignActionUpdateNode id="1800" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="$PERSISTENT/Root/PartList/row[$i]/received - $PERSISTENT/Root/PartList/row[$i]/used"/>
+							<DesignActionUpdateNode id="1801" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="&apos;&apos;"/>
+						</children>
+					</DesignActionLoop>
+					<DesignActionHideKeyboard id="1802"/>
+					<DesignActionGroupRef id="1803" groupRef="710"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2099" name="Place Initial Order">
+				<children>
+					<DesignActionLoop id="2102" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+						<children>
+							<DesignActionCondition id="2117" condition="$PERSISTENT/Root/PartList/row[$i]/inventory = 0">
+								<children>
+									<DesignActionConditionTrue id="2118">
+										<children>
+											<DesignActionUpdateNode id="2119" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="switch ( $i )
+ case 3 return &apos;300&apos;
+ case 5 return&apos;200&apos;
+ case 6 return &apos;750&apos;
+ default return &apos;50&apos;"/>
+											<DesignActionUpdateNode id="2563" updAt="$PERSISTENT/Root/PartList/row[$i]/received" resOf="$PERSISTENT/Root/PartList/row[$i]/received + $PERSISTENT/Root/PartList/row[$i]/inventory"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+							<DesignActionUpdateNode id="2565" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="&apos;&apos;"/>
+						</children>
+					</DesignActionLoop>
+					<DesignActionGroupRef id="2114" groupRef="710"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="425" name="Normalize Order Values">
+				<children>
+					<DesignActionUpdateNode id="823" updAt="$PERSISTENT/Root/OKsubmit" resOf="&apos;true&apos;"/>
+					<DesignActionLoop id="758" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+						<children>
+							<DesignActionComment id="1949"/>
+							<DesignActionComment id="1952" comment="First check if any entry field is empty, if yes, we want to treat it as zero"/>
+							<DesignActionCondition id="1847" condition="$PERSISTENT/Root/PartList/row[$i]/order = &apos;&apos;">
+								<children>
+									<DesignActionConditionTrue id="1848">
+										<children>
+											<DesignActionUpdateNode id="1849" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="0"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+							<DesignActionComment id="1953"/>
+							<DesignActionComment id="1954" comment="Some devices will let the user enter strings of non-numeric content."/>
+							<DesignActionComment id="1955" comment="If we find any, set them to zero and set the error flag"/>
+							<DesignActionCondition id="1817" condition="string-length( $PERSISTENT/Root/PartList/row[$i]/order ) &gt; 0 
+and NumberTest($PERSISTENT/Root/PartList/row[$i]/order) = false()">
+								<children>
+									<DesignActionConditionTrue id="1818">
+										<children>
+											<DesignActionUpdateNode id="1812" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="0"/>
+											<DesignActionUpdateNode id="1834" updAt="$PERSISTENT/Root/OKsubmit" resOf="&apos;false&apos;"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+							<DesignActionComment id="1956"/>
+							<DesignActionComment id="1948" comment="You can&apos;t order a fraction of a part! "/>
+							<DesignActionComment id="1951" comment="If the user entered a decimal value, round to an integer."/>
+							<DesignActionCondition id="1860" condition="$PERSISTENT/Root/PartList/row[$i]/order castable as xs:double">
+								<children>
+									<DesignActionConditionTrue id="1861">
+										<children>
+											<DesignActionUpdateNode id="1862" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="( $PERSISTENT/Root/PartList/row[$i]/order +0.5 ) idiv 1"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+							<DesignActionComment id="1957"/>
+							<DesignActionComment id="1950" comment="Now that we know everything is an integer, check the values. If any are out"/>
+							<DesignActionComment id="1958" comment="of range, set to zero and set the error flag."/>
+							<DesignActionCondition id="1839" condition="$PERSISTENT/Root/PartList/row[$i]/order &lt; 0 or $PERSISTENT/Root/PartList/row[$i]/order &gt; 2000">
+								<children>
+									<DesignActionConditionTrue id="1840">
+										<children>
+											<DesignActionUpdateNode id="1841" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="0"/>
+											<DesignActionUpdateNode id="1842" updAt="$PERSISTENT/Root/OKsubmit" resOf="&apos;false&apos;"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+						</children>
+					</DesignActionLoop>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="303" name="Place Order">
+				<children>
+					<DesignActionGroupRef id="424" groupRef="425"/>
+					<DesignActionCondition id="840" condition="$PERSISTENT/Root/OKsubmit = &apos;true&apos;">
+						<children>
+							<DesignActionConditionTrue id="841">
+								<children>
+									<DesignActionComment id="827" comment="Update Parts List"/>
+									<DesignActionLoop id="828" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+										<children>
+											<DesignActionCondition id="2561" condition="$PERSISTENT/Root/PartList/row[$i]/order &gt; 0">
+												<children>
+													<DesignActionConditionTrue id="2562">
+														<children>
+															<DesignActionUpdateNode id="2559" updAt="$PERSISTENT/Root/PartList/row[$i]/received" resOf="$PERSISTENT/Root/PartList/row[$i]/received + $PERSISTENT/Root/PartList/row[$i]/order"/>
+															<DesignActionUpdateNode id="2560" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="$PERSISTENT/Root/PartList/row[$i]/received - $PERSISTENT/Root/PartList/row[$i]/used"/>
+														</children>
+													</DesignActionConditionTrue>
+												</children>
+											</DesignActionCondition>
+											<DesignActionUpdateNode id="832" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="&apos;&apos;"/>
+										</children>
+									</DesignActionLoop>
+								</children>
+							</DesignActionConditionTrue>
+							<DesignActionConditionFalse id="842">
+								<children>
+									<DesignActionLoop id="1852" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+										<children>
+											<DesignActionCondition id="1855" condition="$PERSISTENT/Root/PartList/row[$i]/order = 0">
+												<children>
+													<DesignActionConditionTrue id="1856">
+														<children>
+															<DesignActionUpdateNode id="1854" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="&apos;&apos;"/>
+														</children>
+													</DesignActionConditionTrue>
+												</children>
+											</DesignActionCondition>
+										</children>
+									</DesignActionLoop>
+									<DesignActionMessageBox id="843" msgBoxTitle="&apos;Rejected!&apos;" msgBoxMsg="&apos;Some orders automatically cancelled
+Each quantity must be 0 - 2000
+Please review and resubmit&apos;">
+										<children>
+											<DesignActionMessageBoxButton id="844"/>
+										</children>
+									</DesignActionMessageBox>
+								</children>
+							</DesignActionConditionFalse>
+						</children>
+					</DesignActionCondition>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2081" name="Jump Clock Ahead">
+				<children>
+					<DesignActionCondition id="2073" condition="$PERSISTENT/Root/SimTime &lt; 2300">
+						<children>
+							<DesignActionConditionTrue id="2074">
+								<children>
+									<DesignActionUpdateNode id="2075" updAt="$PERSISTENT/Root/SimTime" resOf="$PERSISTENT/Root/SimTime + 200"/>
+									<DesignActionGroupRef id="2076" groupRef="1728"/>
+									<DesignActionGroupRef id="2077" groupRef="710"/>
+									<DesignActionReloadData id="2078" reloadRef="1267"/>
+									<DesignActionUpdateDisplay id="2079"/>
+								</children>
+							</DesignActionConditionTrue>
+						</children>
+					</DesignActionCondition>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2162" name="Adjust Score">
+				<children>
+					<DesignActionLoop id="2146" varName="i" forEach="(1 to $PERSISTENT/Root/PartNumbersCount )">
+						<children>
+							<DesignActionCondition id="2147" condition="$PERSISTENT/Root/PartList/row[$i]/inventory_status &gt; 2">
+								<children>
+									<DesignActionConditionTrue id="2148">
+										<children>
+											<DesignActionUpdateNode id="2149" updAt="$PERSISTENT/Root/Score" resOf="$PERSISTENT/Root/Score - 2"/>
+											<DesignActionUpdateNode id="2181" updAt="$PERSISTENT/Root/aboveTarget" resOf="$PERSISTENT/Root/aboveTarget + 1"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+							<DesignActionCondition id="2156" condition="$PERSISTENT/Root/PartList/row[$i]/inventory_status &lt; 0.5 and $PERSISTENT/Root/PartList/row[$i]/inventory_status &gt; 0">
+								<children>
+									<DesignActionConditionTrue id="2157">
+										<children>
+											<DesignActionUpdateNode id="2158" updAt="$PERSISTENT/Root/Score" resOf="$PERSISTENT/Root/Score - 4"/>
+											<DesignActionUpdateNode id="2182" updAt="$PERSISTENT/Root/belowTarget" resOf="$PERSISTENT/Root/belowTarget + 1"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+							<DesignActionCondition id="2159" condition="$PERSISTENT/Root/PartList/row[$i]/inventory_status &lt; 0">
+								<children>
+									<DesignActionConditionTrue id="2160">
+										<children>
+											<DesignActionUpdateNode id="2161" updAt="$PERSISTENT/Root/Score" resOf="$PERSISTENT/Root/Score - 10"/>
+											<DesignActionUpdateNode id="2183" updAt="$PERSISTENT/Root/belowZero" resOf="$PERSISTENT/Root/belowZero + 1"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+						</children>
+					</DesignActionLoop>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2184" name="Reset Score">
+				<children>
+					<DesignActionUpdateNode id="2174" updAt="$PERSISTENT/Root/Score" resOf="200"/>
+					<DesignActionUpdateNode id="2175" updAt="$PERSISTENT/Root/OrdersCount" resOf="0"/>
+					<DesignActionUpdateNode id="2176" updAt="$PERSISTENT/Root/aboveTarget" resOf="0"/>
+					<DesignActionUpdateNode id="2177" updAt="$PERSISTENT/Root/belowTarget" resOf="0"/>
+					<DesignActionUpdateNode id="2178" updAt="$PERSISTENT/Root/belowZero" resOf="0"/>
+					<DesignActionUpdateNode id="2179" updAt="$PERSISTENT/Root/fillCount" resOf="0"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2726" name="Reset All Data">
+				<children>
+					<DesignActionUpdateNode id="2714" updAt="$PERSISTENT/Root/SimTime" resOf="0500"/>
+					<DesignActionGroupRef id="2715" groupRef="2184"/>
+					<DesignActionGroupRef id="2716" groupRef="1661"/>
+					<DesignActionGroupRef id="2717" groupRef="1728"/>
+					<DesignActionGroupRef id="2718" groupRef="710"/>
+					<DesignActionGroupRef id="2719" groupRef="1805"/>
+					<DesignActionGroupRef id="2720" groupRef="2099"/>
+					<DesignActionReloadData id="2721" reloadRef="1267"/>
+				</children>
+			</DesignActionGroup>
+		</children>
+	</ActionGroupRoot>
+	<XPathFunctionsRoot id="11">
+		<children>
+			<DesignXPathFunction id="166" xpath="declare function CurrBuildKitSPused()
+{
+	($ProductSalesMTD/DB/RowSet/Row[1]/@Quantity * 2) + $ProductSalesMTD/DB/RowSet/Row[2]/@Quantity + $ProductSalesMTD/DB/RowSet/Row[3]/@Quantity + ($ProductSalesMTD/DB/RowSet/Row[4]/@Quantity * 2)
+}"/>
+			<DesignXPathFunction id="167" xpath="declare function CurrBuildKitSPinv()
+{
+	$PERSISTENT/Root/PartList/row[3]/received - CurrBuildKitSPused()
+}"/>
+			<DesignXPathFunction id="179" xpath="declare function CurrBuildKitWGused()
+{
+	 ($ProductSalesMTD/DB/RowSet/Row[2]/@Quantity * 2)  + ($ProductSalesMTD/DB/RowSet/Row[4]/@Quantity * 1) + ($ProductSalesMTD/DB/RowSet/Row[5]/@Quantity * 1)
+}"/>
+			<DesignXPathFunction id="180" xpath="declare function CurrBuildKitWGinv()
+{
+	$PERSISTENT/Root/PartList/row[5]/received - CurrBuildKitWGused()
+}"/>
+			<DesignXPathFunction id="183" xpath="declare function CurrBuildKitGAused()
+{
+	($ProductSalesMTD/DB/RowSet/Row[1]/@Quantity * 1) 
+}"/>
+			<DesignXPathFunction id="184" xpath="declare function CurrBuildKitGAinv()
+{
+	$PERSISTENT/Root/PartList/row[1]/received - CurrBuildKitGAused()
+}"/>
+			<DesignXPathFunction id="187" xpath="declare function CurrBuildKitGZused()
+{
+	($ProductSalesMTD/DB/RowSet/Row[2]/@Quantity * 1)  
+}"/>
+			<DesignXPathFunction id="188" xpath="declare function CurrBuildKitGZinv()
+{
+	$PERSISTENT/Root/PartList/row[2]/received - CurrBuildKitGZused()
+}"/>
+			<DesignXPathFunction id="191" xpath="declare function CurrBuildKitTJused()
+{
+	 ($ProductSalesMTD/DB/RowSet/Row[4]/@Quantity * 1) 
+}"/>
+			<DesignXPathFunction id="192" xpath="declare function CurrBuildKitTJinv()
+{
+	$PERSISTENT/Root/PartList/row[4]/received - CurrBuildKitTJused()
+}"/>
+			<DesignXPathFunction id="195" xpath="declare function CurrConnectorUsed()
+{
+	($ProductSalesMTD/DB/RowSet/Row[1]/@Quantity * 2) + ($ProductSalesMTD/DB/RowSet/Row[2]/@Quantity * 6) + ($ProductSalesMTD/DB/RowSet/Row[4]/@Quantity * 4) + ($ProductSalesMTD/DB/RowSet/Row[5]/@Quantity * 1)
+}"/>
+			<DesignXPathFunction id="196" xpath="declare function CurrConnectorInv()
+{
+  $PERSISTENT/Root/PartList/row[6]/received - CurrConnectorUsed()
+}"/>
+			<DesignXPathFunction id="973" xpath="declare function IsBlack($a)
+{
+                count( ( 2, 4, 6 )[ char( $a, . ) &gt;= &apos;0&apos; and char( $a, . ) &lt;= &apos;7&apos; ] ) &gt;= 2
+}"/>
+			<DesignXPathFunction id="1819" xpath="declare function NumberTest($a) as xs:boolean
+{
+	string(number($a)) != &apos;NaN&apos;
+}"/>
+			<DesignXPathFunction id="2082" xpath="declare function TimeAsString() as xs:string
+{
+
+if ($PERSISTENT/Root/SimTime &lt; 1200 )
+then
+concat (
+substring (
+	 (pad-string-left( $PERSISTENT/Root/SimTime ,  4 ,  &apos;0&apos;))
+, 1, 2)
+, &apos;:00 AM&apos;)
+else
+concat (
+substring (
+	 (pad-string-left( $PERSISTENT/Root/SimTime ,  4 ,  &apos;0&apos;))
+, 1, 2)
+, &apos;:00 PM&apos;)
+}"/>
+		</children>
+	</XPathFunctionsRoot>
+	<PageXMLNamespaceRoot id="16">
+		<children>
+			<PageXMLNamespace id="17" defNS="1"/>
+		</children>
+	</PageXMLNamespaceRoot>
+	<PageXMLPersistentRoot id="18" name="PERSISTENT">
+		<children>
+			<PageXMLElement id="19" name="Root">
+				<children>
+					<PageXMLElement id="892" name="SkipIntro" mustExist="1" default="false"/>
+					<PageXMLElement id="961" name="ShowMore" mustExist="1" default="false"/>
+					<PageXMLElement id="20" name="CurrentDate" mustExist="1" default="current-date-no-TZ()" defValueIsXPath="1"/>
+					<PageXMLElement id="21" name="LastRunDate" mustExist="1" default="2014-12-01"/>
+					<PageXMLElement id="22" name="initNewMonth" mustExist="1" default="true"/>
+					<PageXMLElement id="160" name="MaxTime" mustExist="1" default="2359"/>
+					<PageXMLElement id="822" name="OKsubmit" mustExist="1" default="true"/>
+					<PageXMLElement id="1790" name="PartNumbersCount" mustExist="1" default="6"/>
+					<PageXMLElement id="1961" name="SimTime" mustExist="1" default="0500"/>
+					<PageXMLElement id="2144" name="Score" mustExist="1" default="200"/>
+					<PageXMLElement id="2145" name="OrdersCount" mustExist="1" default="0"/>
+					<PageXMLElement id="2185" name="aboveTarget" mustExist="1" default="0"/>
+					<PageXMLElement id="2186" name="belowTarget" mustExist="1" default="0"/>
+					<PageXMLElement id="2187" name="belowZero" mustExist="1" default="0"/>
+					<PageXMLElement id="2188" name="fillCount" mustExist="1" default="0"/>
+					<PageXMLElement id="2385" name="tempHold" mustExist="1" default="0"/>
+					<PageXMLElement id="1662" name="PartList" mustExist="1" default="&apos;&apos;">
+						<children>
+							<PageXMLElement id="1729" name="row">
+								<children>
+									<PageXMLElement id="1649" name="name" mustExist="1" default="&apos;PartName&apos;"/>
+									<PageXMLElement id="1650" name="received" mustExist="1" default="50"/>
+									<PageXMLElement id="1651" name="used" mustExist="1" default="0"/>
+									<PageXMLElement id="1652" name="inventory" mustExist="1" default="50"/>
+									<PageXMLElement id="1653" name="order" mustExist="1" default="&apos;&apos;"/>
+									<PageXMLElement id="1654" name="avgdemand" mustExist="1" default="0"/>
+									<PageXMLElement id="1655" name="inventory_status" mustExist="1" default="4"/>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+					<PageXMLElement id="2680" name="mainView" mustExist="1" default="order"/>
+				</children>
+			</PageXMLElement>
+		</children>
+	</PageXMLPersistentRoot>
+	<PageXMLRoots id="15">
+		<children>
+			<PageXMLRootDB id="152" name="ProductSalesMTD" readOnlyXML="1">
+				<children>
+					<PageXMLElement id="155" name="DB" from="db">
+						<children>
+							<PageXMLElement id="156" name="RowSet" from="db">
+								<children>
+									<PageXMLElement id="157" name="Row" from="db">
+										<children>
+											<PageXMLAttribute id="158" name="Name" from="db"/>
+											<PageXMLAttribute id="159" name="Quantity" from="db"/>
+										</children>
+									</PageXMLElement>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+				</children>
+				<dbSelection so="1" id="154" dbSource_so="151">
+					<dbSelectionDescription>
+						<statements>
+							<statement name="SELECT_Statement" statementUI="SELECT 	
+       [products].[prodName] AS Name,
+		SUM ([quantity]) AS Quantity
+FROM   [widgetOrders] LEFT JOIN [products]
+ON [widgetOrders].[product] = [products].[id]
+WHERE CAST(strftime(&apos;%m&apos;, [widgetOrders].[date]) AS INTEGER) =  :DESIREDMONTH 
+AND ((CAST(strftime(&apos;%d&apos;, [widgetOrders].[date]) AS INTEGER) &lt;  :DESIREDDAY  ) 
+OR ((CAST(strftime(&apos;%d&apos;, [widgetOrders].[date]) AS INTEGER) = :DESIREDDAY) AND CAST([widgetorders].[time] AS INTEGER) &lt; :DESIREDTIME))
+OR [widgetOrders].[region] = 0
+GROUP BY [products].[prodName]
+ORDER BY 1
+
+;" table="products">
+								<colDescriptions>
+									<col name="Name" realName="prodName" dataType="mt_string" length="80"/>
+									<col name="Quantity" fixed="1" dataType="mt_string"/>
+								</colDescriptions>
+								<parameters>
+									<par name="DESIREDMONTH" dataType="mt_bigint" xpath="month-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+									<par name="DESIREDDAY" dataType="mt_bigint" xpath="day-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+									<par name="DESIREDTIME" dataType="mt_bigint" xpath="$PERSISTENT/Root/SimTime" detect="0"/>
+								</parameters>
+							</statement>
+						</statements>
+					</dbSelectionDescription>
+				</dbSelection>
+			</PageXMLRootDB>
+			<PageXMLRootXML id="552" name="XMLBoMShort" readOnlyXML="1" embeddedXML="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;BoMshort&gt;&lt;row&gt;&lt;prod&gt;gadget&lt;/prod&gt;&lt;part&gt;sprocket&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildkitGA&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;gizmo&lt;/prod&gt;&lt;part&gt;sprocket&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;widget&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildkitGZ&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;4&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;sprocket&lt;/prod&gt;&lt;part&gt;BuildkitSP&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;thingamajig&lt;/prod&gt;&lt;part&gt;sprocket&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;widget&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildKitTJ&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;3&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;widget&lt;/prod&gt;&lt;part&gt;BuildkitWG&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;/BoMshort&gt;" hasUrl="1">
+				<children>
+					<PageXMLElement id="553" name="BoMshort" from="xml">
+						<children>
+							<PageXMLElement id="554" name="row" from="xml">
+								<children>
+									<PageXMLElement id="555" name="prod" from="xml"/>
+									<PageXMLElement id="556" name="part" from="xml"/>
+									<PageXMLElement id="557" name="quantity" from="xml"/>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+				</children>
+				<DefaultFile so="1" id="558" url="BoMshort.xml" deployable_so="560"/>
+			</PageXMLRootXML>
+			<PageXMLRootXML id="602" name="XMLBoM" readOnlyXML="1" embeddedXML="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;BillOfMaterials&gt;&lt;row&gt;&lt;prod&gt;gadget&lt;/prod&gt;&lt;part&gt;BuildkitGA&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildkitSP&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;gizmo&lt;/prod&gt;&lt;part&gt;BuildkitGZ&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildkitSP&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildkitWG&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;6&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;sprocket&lt;/prod&gt;&lt;part&gt;BuildkitSP&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;thingamajig&lt;/prod&gt;&lt;part&gt;BuildkitSP&lt;/part&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildkitTJ&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;BuildkitWG&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;4&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod&gt;widget&lt;/prod&gt;&lt;part&gt;BuildkitWG&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;prod/&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;/BillOfMaterials&gt;" hasUrl="1">
+				<children>
+					<PageXMLElement id="603" name="BillOfMaterials" from="xml">
+						<children>
+							<PageXMLElement id="604" name="row" from="xml">
+								<children>
+									<PageXMLElement id="605" name="prod" from="xml"/>
+									<PageXMLElement id="606" name="part" from="xml"/>
+									<PageXMLElement id="607" name="quantity" from="xml"/>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+				</children>
+				<DefaultFile so="1" id="608" url="BoM.xml" deployable_so="610"/>
+			</PageXMLRootXML>
+			<PageXMLRootXML id="651" name="XMLWhereUsed" readOnlyXML="1" embeddedXML="&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;&lt;partsList&gt;&lt;row&gt;&lt;part&gt;BuildkitGA&lt;/part&gt;&lt;prod&gt;gadgets&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part&gt;BuildkitGZ&lt;/part&gt;&lt;prod&gt;gizmos&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part&gt;BuildkitSP&lt;/part&gt;&lt;prod&gt;gizmos&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;sprockets&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;gadgets&lt;/prod&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;thingamajigs&lt;/prod&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part&gt;BuildkitTJ&lt;/part&gt;&lt;prod&gt;thingamajigs&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part&gt;BuildkitWG&lt;/part&gt;&lt;prod&gt;thingamajigs&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;widgets&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;gizmos&lt;/prod&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part&gt;Connector&lt;/part&gt;&lt;prod&gt;widgets&lt;/prod&gt;&lt;quantity&gt;1&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;gadgets&lt;/prod&gt;&lt;quantity&gt;2&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;thingamajigs&lt;/prod&gt;&lt;quantity&gt;4&lt;/quantity&gt;&lt;/row&gt;&lt;row&gt;&lt;part/&gt;&lt;prod&gt;gizmos&lt;/prod&gt;&lt;quantity&gt;6&lt;/quantity&gt;&lt;/row&gt;&lt;/partsList&gt;" hasUrl="1">
+				<children>
+					<PageXMLElement id="652" name="partsList" from="xml">
+						<children>
+							<PageXMLElement id="653" name="row" from="xml">
+								<children>
+									<PageXMLElement id="654" name="part" from="xml"/>
+									<PageXMLElement id="655" name="prod" from="xml"/>
+									<PageXMLElement id="656" name="quantity" from="xml"/>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+				</children>
+				<DefaultFile so="1" id="657" url="WhereUsed.xml" deployable_so="659"/>
+			</PageXMLRootXML>
+			<PageXMLRootDB id="1221" name="RemainingOrders" readOnlyXML="1">
+				<children>
+					<PageXMLElement id="1222" name="DB" from="db">
+						<children>
+							<PageXMLElement id="1223" name="RowSet" from="db">
+								<children>
+									<PageXMLElement id="1224" name="Row" from="db">
+										<children>
+											<PageXMLAttribute id="1225" name="Waiting" from="db"/>
+										</children>
+									</PageXMLElement>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+				</children>
+				<dbSelection so="1" id="1227" dbSource_so="151">
+					<dbSelectionDescription>
+						<statements>
+							<statement name="Remaining_Orders" statementUI="SELECT 
+   COUNT(&quot;main&quot;.&quot;widgetOrders&quot;.&quot;time&quot;) AS Waiting
+FROM &quot;main&quot;.&quot;widgetOrders&quot;, &quot;main&quot;.&quot;products&quot;
+WHERE CAST(strftime(&apos;%m&apos;, [widgetOrders].[date]) AS INTEGER) = :DESIREDMONTH
+AND CAST(strftime(&apos;%d&apos;, [widgetOrders].[date]) AS INTEGER) = :DESIREDDAY
+AND &quot;widgetorders&quot;.&quot;product&quot; = &quot;products&quot;.&quot;id&quot;
+AND CAST([widgetorders].[time] AS INTEGER) &gt; :DESIREDTIME 
+
+;">
+								<colDescriptions>
+									<col name="Waiting" fixed="1" dataType="mt_string"/>
+								</colDescriptions>
+								<parameters>
+									<par name="DESIREDMONTH" dataType="mt_bigint" xpath="month-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+									<par name="DESIREDDAY" dataType="mt_bigint" xpath="day-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+									<par name="DESIREDTIME" dataType="mt_bigint" xpath="$PERSISTENT/Root/SimTime" detect="0"/>
+								</parameters>
+							</statement>
+						</statements>
+					</dbSelectionDescription>
+				</dbSelection>
+			</PageXMLRootDB>
+			<PageXMLRootDB id="1552" name="DailyForecast">
+				<children>
+					<PageXMLElement id="1553" name="DB" from="db">
+						<children>
+							<PageXMLElement id="1554" name="RowSet" from="db">
+								<children>
+									<PageXMLElement id="1555" name="Row" from="db">
+										<children>
+											<PageXMLAttribute id="1556" name="prodName" from="db"/>
+											<PageXMLAttribute id="1557" name="Volume" from="db"/>
+										</children>
+									</PageXMLElement>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+				</children>
+				<dbSelection so="1" id="1559" dbSource_so="151">
+					<dbSelectionDescription>
+						<statements>
+							<statement name="DailyForecast" statementUI="SELECT 
+       &quot;main&quot;.&quot;products&quot;.&quot;prodName&quot;,
+       sum (&quot;main&quot;.&quot;widgetOrders&quot;.&quot;quantity&quot;) AS Volume 
+FROM &quot;main&quot;.&quot;widgetOrders&quot;, &quot;main&quot;.&quot;products&quot;
+WHERE CAST(strftime(&apos;%m&apos;, [widgetOrders].[date]) AS INTEGER) = :DESIREDMONTH
+AND CAST(strftime(&apos;%d&apos;, [widgetOrders].[date]) AS INTEGER) = :DESIREDDAY
+AND &quot;widgetorders&quot;.&quot;product&quot; = &quot;products&quot;.&quot;id&quot;
+OR [widgetOrders].[region] = 0
+GROUP BY 1 
+ORDER BY 1
+
+;" table="products">
+								<colDescriptions>
+									<col name="prodName" dataType="mt_string" length="80"/>
+									<col name="Volume" fixed="1" dataType="mt_string"/>
+								</colDescriptions>
+								<parameters>
+									<par name="DESIREDMONTH" dataType="mt_bigint" xpath="month-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+									<par name="DESIREDDAY" dataType="mt_bigint" xpath="day-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+								</parameters>
+							</statement>
+						</statements>
+					</dbSelectionDescription>
+				</dbSelection>
+			</PageXMLRootDB>
+			<PageXMLRootDB id="1561" name="ReceivedOrders">
+				<children>
+					<PageXMLElement id="1562" name="DB" from="db">
+						<children>
+							<PageXMLElement id="1563" name="RowSet" from="db">
+								<children>
+									<PageXMLElement id="1564" name="Row" from="db">
+										<children>
+											<PageXMLAttribute id="1588" name="Received" from="db"/>
+										</children>
+									</PageXMLElement>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+				</children>
+				<dbSelection so="1" id="1567" dbSource_so="151">
+					<dbSelectionDescription>
+						<statements>
+							<statement name="ReceivedOrders" statementUI="SELECT 
+   COUNT(&quot;main&quot;.&quot;widgetOrders&quot;.&quot;time&quot;) AS Received
+FROM &quot;main&quot;.&quot;widgetOrders&quot;, &quot;main&quot;.&quot;products&quot;
+WHERE CAST(strftime(&apos;%m&apos;, [widgetOrders].[date]) AS INTEGER) = :DESIREDMONTH
+AND CAST(strftime(&apos;%d&apos;, [widgetOrders].[date]) AS INTEGER) = :DESIREDDAY
+AND &quot;widgetorders&quot;.&quot;product&quot; = &quot;products&quot;.&quot;id&quot;
+AND CAST([widgetorders].[time] AS INTEGER) &lt;= :DESIREDTIME 
+
+;">
+								<colDescriptions>
+									<col name="Received" fixed="1" dataType="mt_string"/>
+								</colDescriptions>
+								<parameters>
+									<par name="DESIREDMONTH" dataType="mt_bigint" xpath="month-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+									<par name="DESIREDDAY" dataType="mt_bigint" xpath="day-from-date( $PERSISTENT/Root/CurrentDate )" detect="0"/>
+									<par name="DESIREDTIME" dataType="mt_bigint" xpath="$PERSISTENT/Root/SimTime" detect="0"/>
+								</parameters>
+							</statement>
+						</statements>
+					</dbSelectionDescription>
+				</dbSelection>
+			</PageXMLRootDB>
+		</children>
+	</PageXMLRoots>
+	<WorkflowRoot id="12">
+		<children>
+			<WorkflowPageRef id="891" page="883"/>
+			<WorkflowPageRef id="13" page="2"/>
+		</children>
+	</WorkflowRoot>
+	<GlobalVariables id="23">
+		<children>
+			<GlobalVariable id="24" sysVar="MT_Android" idxIcon_so="0"/>
+			<GlobalVariable id="25" sysVar="MT_iOS" idxIcon_so="1"/>
+			<GlobalVariable id="26" sysVar="MT_Browser" idxIcon_so="2"/>
+			<GlobalVariable id="27" sysVar="MT_iPad" idxIcon_so="3"/>
+			<GlobalVariable id="28" sysVar="MT_Windows" idxIcon_so="6"/>
+			<GlobalVariable id="29" sysVar="MT_WindowsPhone" idxIcon_so="7"/>
+			<GlobalVariable id="30" sysVar="MT_DeviceWidth"/>
+			<GlobalVariable id="31" sysVar="MT_DeviceHeight"/>
+			<GlobalVariable id="32" sysVar="MT_DPIX"/>
+			<GlobalVariable id="33" sysVar="MT_DPIY"/>
+			<GlobalVariable id="34" sysVar="MT_Landscape" idxIcon_so="4"/>
+			<GlobalVariable id="35" sysVar="MT_Portrait" idxIcon_so="5"/>
+			<GlobalVariable id="36" sysVar="MT_CanvasX"/>
+			<GlobalVariable id="37" sysVar="MT_CanvasY"/>
+			<GlobalVariable id="38" sysVar="MT_ClientLanguage"/>
+			<GlobalVariable id="39" sysVar="MT_UserName"/>
+			<GlobalVariable id="40" sysVar="MT_UserRoles"/>
+			<GlobalVariable id="41" sysVar="MT_TelephonyAvailable" idxIcon_so="20"/>
+			<GlobalVariable id="42" sysVar="MT_SMSAvailable" idxIcon_so="21"/>
+			<GlobalVariable id="43" sysVar="MT_ButtonTextColor"/>
+			<GlobalVariable id="44" sysVar="MT_ButtonBackgroundColor"/>
+			<GlobalVariable id="45" sysVar="MT_EditFieldTextColor"/>
+			<GlobalVariable id="46" sysVar="MT_EditFieldBackgroundColor"/>
+			<GlobalVariable id="47" sysVar="MT_LabelTextColor"/>
+			<GlobalVariable id="48" sysVar="MT_LabelBackgroundColor"/>
+			<GlobalVariable id="49" sysVar="MT_PageBackgroundColor"/>
+			<GlobalVariable id="50" sysVar="MT_FirstPageLoad"/>
+			<GlobalVariable id="51" sysVar="MT_TargetNode"/>
+			<GlobalVariable id="52" sysVar="MT_ControlKind"/>
+			<GlobalVariable id="53" sysVar="MT_ControlName"/>
+			<GlobalVariable id="54" sysVar="MT_ControlNode"/>
+			<GlobalVariable id="55" sysVar="MT_ControlValue"/>
+			<GlobalVariable id="56" sysVar="MT_ControlValueBeforeChange"/>
+			<GlobalVariable id="57" sysVar="MT_PageName"/>
+			<GlobalVariable id="58" sysVar="MT_SimulationMode"/>
+			<GlobalVariable id="59" sysVar="MT_DBExecute_Result"/>
+			<GlobalVariable id="60" sysVar="MT_CameraAvailable"/>
+			<GlobalVariable id="61" sysVar="MT_GeolocationAvailable"/>
+			<GlobalVariable id="215" sysVar="MT_InputParameters"/>
+			<GlobalVariable id="670" sysVar="MT_HTTPExecute_Result"/>
+			<GlobalVariable id="671" sysVar="MT_ServerConnectionErrorLocation"/>
+			<GlobalVariable id="672" sysVar="MT_IsAppStoreApp"/>
+			<GlobalVariable id="673" sysVar="MT_WindowWidth"/>
+			<GlobalVariable id="674" sysVar="MT_WindowHeight"/>
+			<GlobalVariable id="675" sysVar="MT_AudioChannel"/>
+			<GlobalVariable id="676" sysVar="MT_TableColumnContext"/>
+			<GlobalVariable id="677" sysVar="MT_NFCAvailable"/>
+		</children>
+	</GlobalVariables>
+	<ChartSettingsRoot id="348">
+		<children>
+			<ChartSettings id="874">
+				<chartData so="1" map-data-categories="1">
+					<layer>
+						<dataseries-xny-rows for-each="reverse($PERSISTENT/Root/PartList/row)" x-value="name" auto-x-value="0">
+							<col y-value="( inventory_status * 100 )  idiv 1" y-name="&quot;Series 1&quot;"/>
+						</dataseries-xny-rows>
+						<chartsettings>
+							<General SettingsVersion="3" BKColorGradientEnd="#cce8ff" PlotBKColorGradientEnd="#e8ffe9" Title="Current Inventory as % of Average Daily Demand" ShowLegend="0" Orientation="horz">
+								<TitleFont MinFontHeight="8.pt" Size="6.%"/>
+								<AxisLabelFont Name="Arial" Size="3.5%"/>
+							</General>
+							<Bar ShowShadow="0" FillStyle="VertGradient" ShowLabels="1">
+								<LabelFont Bold="1" Size="7.%"/>
+							</Bar>
+							<Colors Style="User" Colors="#04b508" Colors1="#237518" Colors2="#0879b5" Colors3="#dc7708" Colors4="#dc143c" Colors5="#ffd700" Colors6="#4410a3" Colors7="#878369" Colors8="#b71b68" Colors9="#a25d2d" Colors10="#0028ff" Colors11="#bfbfbf" Colors12="#52aca0" Colors13="#d3c15d" Colors14="#8971d8"/>
+							<XY>
+								<XAxis ShowGrid="1">
+									<ValueFont Size="4.5%"/>
+								</XAxis>
+								<YAxis AutoRange="0" RangeTill="205." UseAutoTick="0" ManualTickInterval="50.">
+									<ValueFont Size="4.5%"/>
+								</YAxis>
+							</XY>
+						</chartsettings>
+						<chartsettings-xpath>
+							<main-properties>
+								<main-property location="ChartSettings/General/@BKColor" xpath="if ($MT_iOS = true() ) then $MT_EditFieldBackgroundColor else
+$MT_PageBackgroundColor"/>
+								<main-property location="ChartSettings/General/@PlotBorderColor" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/General/@PlotBKColor" xpath="if ($MT_iOS = true() ) then $MT_EditFieldBackgroundColor else
+$MT_PageBackgroundColor"/>
+								<main-property location="ChartSettings/General/TitleFont/@Color" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/General/LegendFont/@Color" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/General/AxisLabelFont/@Color" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/XY/XAxis/@AxisColor" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/XY/XAxis/@AxisGridColor" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/XY/XAxis/ValueFont/@Color" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/XY/YAxis/@AxisColor" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/XY/YAxis/@AxisGridColor" xpath="$MT_LabelTextColor"/>
+								<main-property location="ChartSettings/XY/YAxis/ValueFont/@Color" xpath="$MT_LabelTextColor"/>
+							</main-properties>
+						</chartsettings-xpath>
+					</layer>
+				</chartData>
+			</ChartSettings>
+		</children>
+	</ChartSettingsRoot>
+	<DeployableFiles so="1" id="63">
+		<children>
+			<DeployableFile id="560"/>
+			<DeployableFile id="610"/>
+			<DeployableFile id="659"/>
+		</children>
+	</DeployableFiles>
+	<DBSourcesRoot so="1" id="14">
+		<children>
+			<DBSource id="151">
+				<dbDesignerInfo name="companySales"/>
+				<dbContextInfo catalog="main" connection="SampleData\CompanySalesDB\companySales.sqlite" contextType="sqlite" databaseMajorVersion="3" vendor="sqlite"/>
+			</DBSource>
+		</children>
+	</DBSourcesRoot>
+	<CustomerAppSettings so="1" id="658"/>
+</MobileTogetherDesign>
