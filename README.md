@@ -10,6 +10,8 @@ This app also uses the widgetorders database supplied with the MobileTogether De
 You can download the free-to-use MobileTogether Designer at http://www.altova.com/download/mobiletogether-designer.html
 Open the file InventoryManager.mtd in the MobileTogether Designer to examine how it was built and execute it in the Designer Simulation feature.
 
+The latest version includes several new features, including user control over starting inventory values in the Reset Data option.
+
 Download the MobileTogether Mobile App for your device at the app store and connect to the MobileTogether Demo Server to run more demo apps.
 
 Altova MobileTogether is a cross-platform mobile development framework for building data-centric apps. MobileTogether allows you to build one solution for all platforms -- in record time -- and deliver it to end users on their devices of choice.

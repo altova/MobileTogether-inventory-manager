@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MobileTogetherDesign versionClient="55" versionServer="55" deploymentPath_so="/public/Inventory Manager" deploymentDescription_so="Version 70606b -14:14 - Updated with better UI and v 3.2 features, added back buttons." deploymentGlobalResourceConfig_so="Default">
+<MobileTogetherDesign versionClient="58" versionServer="58" deploymentPath_so="/public/Inventory Manager" deploymentDescription_so="Version 80320 - Updated with better UI and new features" deploymentGlobalResourceConfig_so="Default">
 	<DesignRoot id="1">
 		<style askCancelWorkflow="0" cancelWorkflowMsg_x="&apos;Check back later to see if current inventory is consumed by incoming sales. 
 
@@ -46,9 +46,32 @@ Confirm exit:&apos;" serverAccess="ondemand" timeoutClient="30" timeoutDataRetri
 										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" margin="6px" marginLeft="0px" marginRight="0px" multiLine="1" name="Advance clock button" text="Advance Clock" valign="middle" visible_x="$RemainingOrders/DB/RowSet/Row/@Waiting &gt; 0" weight="1"/>
 										<controlActions id="2682">
 											<children>
-												<DesignActionGroupRef id="2685" groupRef="2162"/>
-												<DesignActionGroupRef id="2686" groupRef="2081"/>
-												<DesignActionGroupRef id="2687" groupRef="2162"/>
+												<DesignActionCondition id="2936" condition="$PERSISTENT/Root/advanceOK = 1">
+													<children>
+														<DesignActionConditionTrue id="2937">
+															<children>
+																<DesignActionUpdateNode id="2934" updAt="$PERSISTENT/Root/advanceOK" resOf="0"/>
+																<DesignActionGroupRef id="2927" groupRef="2162"/>
+																<DesignActionGroupRef id="2928" groupRef="2081"/>
+																<DesignActionGroupRef id="2929" groupRef="2162"/>
+																<DesignActionLoop id="2930" varName="i" forEach="1 to $PERSISTENT/Root/PartNumbersCount">
+																	<children>
+																		<DesignActionCondition id="2931" condition="$PERSISTENT/Root/PartList/row[$i]/inventory_status &lt; 0.5">
+																			<children>
+																				<DesignActionConditionTrue id="2932">
+																					<children>
+																						<DesignActionUpdateNode id="2933" updAt="$PERSISTENT/Root/mainView" resOf="&apos;order&apos;"/>
+																					</children>
+																				</DesignActionConditionTrue>
+																			</children>
+																		</DesignActionCondition>
+																	</children>
+																</DesignActionLoop>
+																<DesignActionUpdateNode id="2935" updAt="$PERSISTENT/Root/advanceOK" resOf="1"/>
+															</children>
+														</DesignActionConditionTrue>
+													</children>
+												</DesignActionCondition>
 											</children>
 										</controlActions>
 									</DesignButton>
@@ -285,14 +308,18 @@ or $PERSISTENT/Root/PartList/row[6]/inventory &lt; 0 )" weight="1"/>
 										</controlActions>
 									</DesignButton>
 									<DesignButton id="769">
-										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="4px" marginRight="4px" multiLine="1" name="Submit Order Button" text="Buy Parts" weight="1"/>
+										<style align="center" backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" marginLeft="4px" marginRight="4px" multiLine="1" name="Submit Order Button" text="Buy Parts" visible_x="$PERSISTENT/Root/PartList/row/order[1] != &apos;&apos; or 
+$PERSISTENT/Root/PartList/row/order[2] != &apos;&apos; or 
+$PERSISTENT/Root/PartList/row/order[3] != &apos;&apos; or 
+$PERSISTENT/Root/PartList/row/order[4] != &apos;&apos; or 
+$PERSISTENT/Root/PartList/row/order[5] != &apos;&apos; or 
+$PERSISTENT/Root/PartList/row/order[6] != &apos;&apos;" weight="1"/>
 										<controlActions id="770">
 											<children>
 												<DesignActionHideKeyboard id="1942"/>
 												<DesignActionUpdateNode id="2166" updAt="$PERSISTENT/Root/OrdersCount" resOf="$PERSISTENT/Root/OrdersCount +1"/>
 												<DesignActionGroupRef id="773" groupRef="303"/>
 												<DesignActionGroupRef id="1170" groupRef="710"/>
-												<DesignActionReloadData id="1171" reloadRef="1267"/>
 												<DesignActionCondition id="2167" condition="$PERSISTENT/Root/OrdersCount &gt; 1">
 													<children>
 														<DesignActionConditionTrue id="2168">
@@ -303,6 +330,9 @@ or $PERSISTENT/Root/PartList/row[6]/inventory &lt; 0 )" weight="1"/>
 													</children>
 												</DesignActionCondition>
 												<DesignActionGroupRef id="2170" groupRef="2162"/>
+												<DesignActionUpdateNode id="2758" updAt="$PERSISTENT/Root/mainView" resOf="&quot;chart&quot;"/>
+												<DesignActionReloadData id="2925" reloadRef="1267"/>
+												<DesignActionScrollTo id="2759" scrolltoTarget="top" subject="page"/>
 											</children>
 										</controlActions>
 									</DesignButton>
@@ -489,18 +519,38 @@ or $PERSISTENT/Root/PartList/row[6]/inventory &lt; 0 )" weight="1"/>
 										<style backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" margin="10px" marginLeft="20px" marginRight="20px" name="Reset Data Button" text="Reset Data" valign="middle"/>
 										<controlActions id="2640">
 											<children>
-												<DesignActionMessageBox id="2697" msgBoxKind="okcancel" msgBoxMsg="&apos;This will reset all inventory data and restart the simulation for today.
+												<DesignActionMessageBox id="2697" actionEnabled="0" msgBoxKind="okcancel" msgBoxMsg="&apos;This will reset all inventory data and restart the simulation for today.
 
 Are you sure?&apos;">
 													<children>
-														<DesignActionMessageBoxButton id="2698">
-															<children>
-																<DesignActionGroupRef id="2722" groupRef="2726"/>
-															</children>
-														</DesignActionMessageBoxButton>
+														<DesignActionMessageBoxButton id="2698"/>
 														<DesignActionMessageBoxButton id="2699"/>
 													</children>
 												</DesignActionMessageBox>
+												<DesignActionGotoSubpage id="2905" pageRef="2814" asModalDialog="1" modalDialogWidthXPath="$MT_CanvasX * .67" modalDialogHeightXPath="$MT_CanvasY *.67"/>
+												<DesignActionCondition id="2919" condition="$PERSISTENT/Root/resetGo = 1">
+													<children>
+														<DesignActionConditionTrue id="2920">
+															<children>
+																<DesignActionCondition id="2912" condition="$PERSISTENT/Root/resetAll = 1">
+																	<children>
+																		<DesignActionConditionTrue id="2913">
+																			<children>
+																				<DesignActionGroupRef id="2914" groupRef="2726"/>
+																			</children>
+																		</DesignActionConditionTrue>
+																		<DesignActionConditionFalse id="2915">
+																			<children>
+																				<DesignActionGroupRef id="2916" groupRef="2763"/>
+																			</children>
+																		</DesignActionConditionFalse>
+																	</children>
+																</DesignActionCondition>
+																<DesignActionUpdateNode id="2918" updAt="$PERSISTENT/Root/mainView" resOf="&quot;order&quot;"/>
+															</children>
+														</DesignActionConditionTrue>
+													</children>
+												</DesignActionCondition>
 											</children>
 										</controlActions>
 									</DesignButton>
@@ -1180,6 +1230,70 @@ Are you sure?&apos;">
 					</children>
 				</onBackButtonActions>
 			</DesignPage>
+			<DesignPage id="2814" subPage="1">
+				<style name="Reset Options"/>
+				<children>
+					<DesignTable id="2875">
+						<style name="Table1"/>
+						<children>
+							<DesignTableCol id="2876"/>
+							<DesignTableCol id="2921"/>
+							<DesignTableRow id="2877">
+								<children>
+									<DesignLabel id="2873">
+										<style colSpan="2" marginBottom="4px" multiLine="1" name="Label1" text="This will reset all inventory data and restart the simulation for today. You can:"/>
+									</DesignLabel>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2880">
+								<children>
+									<DesignRadioButton id="2871" pageXML="2851" checkedValues="1">
+										<style colSpan="2" marginBottom="4px" multiLine="1" name="Radio Button1" text=" Reset all data to default values"/>
+									</DesignRadioButton>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2881">
+								<children>
+									<DesignRadioButton id="2869" pageXML="2851" checkedValues="0">
+										<style colSpan="2" marginBottom="4px" multiLine="1" name="Radio Button2" text=" Restart today&apos;s production with current  inventory"/>
+									</DesignRadioButton>
+								</children>
+							</DesignTableRow>
+							<DesignTableRow id="2882">
+								<children>
+									<DesignButton id="2864">
+										<style backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" name="Button1" text="Okay"/>
+										<controlActions id="2865">
+											<children>
+												<DesignActionUpdateNode id="2922" updAt="$PERSISTENT/Root/resetGo" resOf="1"/>
+												<DesignActionReturnFromSubpage id="2868"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+									<DesignButton id="2900">
+										<style backgroundColor_x="if ($MT_iOS = true() ) then &quot;#EFEFF4&quot; else $MT_ButtonBackgroundColor" name="Button2" text="Cancel"/>
+										<controlActions id="2901">
+											<children>
+												<DesignActionUpdateNode id="2923" updAt="$PERSISTENT/Root/resetGo" resOf="0"/>
+												<DesignActionReturnFromSubpage id="2904"/>
+											</children>
+										</controlActions>
+									</DesignButton>
+								</children>
+							</DesignTableRow>
+						</children>
+					</DesignTable>
+				</children>
+				<xmlRoots>
+					<PageXMLRootRef id="2852" refXMLRoot="152"/>
+					<PageXMLRootRef id="2853" refXMLRoot="552"/>
+					<PageXMLRootRef id="2854" refXMLRoot="602"/>
+					<PageXMLRootRef id="2855" refXMLRoot="651"/>
+					<PageXMLRootRef id="2856" refXMLRoot="1221"/>
+					<PageXMLRootRef id="2857" refXMLRoot="1552"/>
+					<PageXMLRootRef id="2858" refXMLRoot="1561"/>
+				</xmlRoots>
+			</DesignPage>
 		</children>
 	</DesignRoot>
 	<ActionGroupRoot id="10">
@@ -1634,6 +1748,51 @@ Please review and resubmit&apos;">
 					<DesignActionReloadData id="2721" reloadRef="1267"/>
 				</children>
 			</DesignActionGroup>
+			<DesignActionGroup id="2763" name="Restart Day">
+				<children>
+					<DesignActionGroupRef id="2781" groupRef="2767"/>
+					<DesignActionGroupRef id="2782" groupRef="2726"/>
+					<DesignActionGroupRef id="2783" groupRef="2768"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2767" name="Save Inventory">
+				<children>
+					<DesignActionCondition id="2808" condition="count($PERSISTENT/Root/tempInventory/row) &gt; 1">
+						<children>
+							<DesignActionConditionTrue id="2809">
+								<children>
+									<DesignActionLoop id="2806" varName="c" forEach="2 to count($PERSISTENT/Root/tempInventory/row)">
+										<children>
+											<DesignActionDeleteNode id="2807" delAt="$PERSISTENT/Root/tempInventory/row[2]"/>
+										</children>
+									</DesignActionLoop>
+								</children>
+							</DesignActionConditionTrue>
+						</children>
+					</DesignActionCondition>
+					<DesignActionLoop id="2774" varName="c" forEach="2 to $PERSISTENT/Root/PartNumbersCount">
+						<children>
+							<DesignActionAppendNode id="2776" appAt="$PERSISTENT/Root/tempInventory" resOf="$PERSISTENT/Root/tempInventory/row[1]"/>
+						</children>
+					</DesignActionLoop>
+					<DesignActionLoop id="2777" varName="c" forEach="1 to $PERSISTENT/Root/PartNumbersCount">
+						<children>
+							<DesignActionUpdateNode id="2779" updAt="$PERSISTENT/Root/tempInventory/row[$c]/quantity" resOf="$PERSISTENT/Root/PartList/row[$c]/inventory"/>
+						</children>
+					</DesignActionLoop>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2768" name="Restore Inventory">
+				<children>
+					<DesignActionLoop id="2788" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+						<children>
+							<DesignActionUpdateNode id="2796" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="$PERSISTENT/Root/tempInventory/row[$i]/quantity"/>
+							<DesignActionUpdateNode id="2811" updAt="$PERSISTENT/Root/PartList/row[$i]/received" resOf="$PERSISTENT/Root/PartList/row[$i]/received + $PERSISTENT/Root/PartList/row[$i]/inventory"/>
+						</children>
+					</DesignActionLoop>
+					<DesignActionGroupRef id="2795" groupRef="710"/>
+				</children>
+			</DesignActionGroup>
 		</children>
 	</ActionGroupRoot>
 	<XPathFunctionsRoot id="11">
@@ -1754,6 +1913,18 @@ substring (
 						</children>
 					</PageXMLElement>
 					<PageXMLElement id="2680" name="mainView" mustExist="1" default="order"/>
+					<PageXMLElement id="2769" name="tempInventory" mustExist="1">
+						<children>
+							<PageXMLElement id="2770" name="row">
+								<children>
+									<PageXMLElement id="2771" name="quantity" mustExist="1" default="0"/>
+								</children>
+							</PageXMLElement>
+						</children>
+					</PageXMLElement>
+					<PageXMLElement id="2851" name="resetAll" mustExist="1" default="0"/>
+					<PageXMLElement id="2924" name="resetGo" mustExist="1" default="0"/>
+					<PageXMLElement id="2926" name="advanceOK" mustExist="1" default="1"/>
 				</children>
 			</PageXMLElement>
 		</children>
@@ -2039,6 +2210,7 @@ AND CAST([widgetorders].[time] AS INTEGER) &lt;= :DESIREDTIME
 			<GlobalVariable id="675" sysVar="MT_AudioChannel"/>
 			<GlobalVariable id="676" sysVar="MT_TableColumnContext"/>
 			<GlobalVariable id="677" sysVar="MT_NFCAvailable"/>
+			<GlobalVariable id="646" sysVar="MT_IsEmbedded"/>
 		</children>
 	</GlobalVariables>
 	<ChartSettingsRoot id="348">
@@ -2101,7 +2273,7 @@ $MT_PageBackgroundColor"/>
 		<children>
 			<DBSource id="151">
 				<dbDesignerInfo name="companySales"/>
-				<dbContextInfo catalog="main" connection="SampleData\CompanySalesDB\companySales.sqlite" contextType="sqlite" databaseMajorVersion="3" vendor="sqlite"/>
+				<dbContextInfo catalog="main" connection="SampleData\CompanySalesDB\companySales.sqlite" contextType="sqlite" databaseMajorVersion="3" disable_foreign_keys="0" vendor="sqlite"/>
 			</DBSource>
 		</children>
 	</DBSourcesRoot>
