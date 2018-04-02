@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<MobileTogetherDesign versionClient="58" versionServer="58" deploymentPath_so="/public/Inventory Manager" deploymentDescription_so="Version 80320 - Updated with better UI and new features" deploymentGlobalResourceConfig_so="Default">
+<MobileTogetherDesign versionClient="58" versionServer="58" deploymentPath_so="/public/Inventory Manager" deploymentDescription_so="Updated with better UI and new features" deploymentGlobalResourceConfig_so="Default">
 	<DesignRoot id="1">
 		<style askCancelWorkflow="0" cancelWorkflowMsg_x="&apos;Check back later to see if current inventory is consumed by incoming sales. 
 
@@ -1333,6 +1333,7 @@ Are you sure?&apos;">
 						</children>
 					</DesignActionCondition>
 					<DesignActionUpdateNode id="2757" updAt="$PERSISTENT/Root/LastRunDate" resOf="$PERSISTENT/Root/CurrentDate"/>
+					<DesignActionUpdateNode id="2938" updAt="$PERSISTENT/Root/advanceOK" resOf="1"/>
 				</children>
 			</DesignActionGroup>
 			<DesignActionGroup id="1996" name="Test New Day">
@@ -1488,12 +1489,12 @@ default return 0"/>
 					<DesignActionLoop id="2545" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount  )">
 						<children>
 							<DesignActionUpdateNode id="2546" updAt="$PERSISTENT/Root/PartList/row[$i]/avgdemand" resOf="switch ( $i )
- case 1 return CurrBuildKitGAused() div day-from-date( $PERSISTENT/Root/CurrentDate )
- case 2 return CurrBuildKitGZused() div day-from-date( $PERSISTENT/Root/CurrentDate )
- case 3 return CurrBuildKitSPused() div day-from-date( $PERSISTENT/Root/CurrentDate )
- case 4 return CurrBuildKitTJused() div day-from-date( $PERSISTENT/Root/CurrentDate )
- case 5 return CurrBuildKitWGused() div day-from-date( $PERSISTENT/Root/CurrentDate )
- case 6 return CurrConnectorUsed() div day-from-date( $PERSISTENT/Root/CurrentDate )
+ case 1 return CurrBuildKitGAused() div day-from-date( $PERSISTENT/Root/CurrentDate ) 
+ case 2 return CurrBuildKitGZused() div day-from-date( $PERSISTENT/Root/CurrentDate ) 
+ case 3 return CurrBuildKitSPused() div day-from-date( $PERSISTENT/Root/CurrentDate ) 
+ case 4 return CurrBuildKitTJused() div day-from-date( $PERSISTENT/Root/CurrentDate ) 
+ case 5 return CurrBuildKitWGused() div day-from-date( $PERSISTENT/Root/CurrentDate ) 
+ case 6 return CurrConnectorUsed() div  day-from-date( $PERSISTENT/Root/CurrentDate ) 
  default return &apos;100&apos;"/>
 							<DesignActionUpdateNode id="2547" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory_status" resOf="( $PERSISTENT/Root/PartList/row[$i]/inventory) div ($PERSISTENT/Root/PartList/row[$i]/avgdemand )"/>
 						</children>
@@ -1752,7 +1753,7 @@ Please review and resubmit&apos;">
 				<children>
 					<DesignActionGroupRef id="2781" groupRef="2767"/>
 					<DesignActionGroupRef id="2782" groupRef="2726"/>
-					<DesignActionGroupRef id="2783" groupRef="2768"/>
+					<DesignActionGroupRef id="2783" groupRef="2971"/>
 				</children>
 			</DesignActionGroup>
 			<DesignActionGroup id="2767" name="Save Inventory">
@@ -1782,15 +1783,36 @@ Please review and resubmit&apos;">
 					</DesignActionLoop>
 				</children>
 			</DesignActionGroup>
-			<DesignActionGroup id="2768" name="Restore Inventory">
+			<DesignActionGroup id="2971" name="Restore Inventory">
 				<children>
-					<DesignActionLoop id="2788" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
+					<DesignActionUpdateNode id="2955" updAt="$PERSISTENT/Root/SimTime" resOf="0500"/>
+					<DesignActionGroupRef id="2956" groupRef="2184"/>
+					<DesignActionGroupRef id="2957" groupRef="1661"/>
+					<DesignActionGroupRef id="2958" groupRef="1728"/>
+					<DesignActionGroupRef id="2959" groupRef="710"/>
+					<DesignActionGroupRef id="2960" groupRef="1805"/>
+					<DesignActionGroupRef id="2961" groupRef="2970"/>
+					<DesignActionReloadData id="2962" reloadRef="1267"/>
+				</children>
+			</DesignActionGroup>
+			<DesignActionGroup id="2970" name="Place Restart Order">
+				<children>
+					<DesignActionLoop id="2963" varName="i" forEach="( 1 to $PERSISTENT/Root/PartNumbersCount )">
 						<children>
-							<DesignActionUpdateNode id="2796" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="$PERSISTENT/Root/tempInventory/row[$i]/quantity"/>
-							<DesignActionUpdateNode id="2811" updAt="$PERSISTENT/Root/PartList/row[$i]/received" resOf="$PERSISTENT/Root/PartList/row[$i]/received + $PERSISTENT/Root/PartList/row[$i]/inventory"/>
+							<DesignActionCondition id="2964" condition="$PERSISTENT/Root/PartList/row[$i]/inventory = 0">
+								<children>
+									<DesignActionConditionTrue id="2965">
+										<children>
+											<DesignActionUpdateNode id="2966" updAt="$PERSISTENT/Root/PartList/row[$i]/inventory" resOf="$PERSISTENT/Root/tempInventory/row[$i]/quantity"/>
+											<DesignActionUpdateNode id="2967" updAt="$PERSISTENT/Root/PartList/row[$i]/received" resOf="$PERSISTENT/Root/PartList/row[$i]/received + $PERSISTENT/Root/PartList/row[$i]/inventory"/>
+										</children>
+									</DesignActionConditionTrue>
+								</children>
+							</DesignActionCondition>
+							<DesignActionUpdateNode id="2968" updAt="$PERSISTENT/Root/PartList/row[$i]/order" resOf="&apos;&apos;"/>
 						</children>
 					</DesignActionLoop>
-					<DesignActionGroupRef id="2795" groupRef="710"/>
+					<DesignActionGroupRef id="2969" groupRef="710"/>
 				</children>
 			</DesignActionGroup>
 		</children>
@@ -2273,7 +2295,7 @@ $MT_PageBackgroundColor"/>
 		<children>
 			<DBSource id="151">
 				<dbDesignerInfo name="companySales"/>
-				<dbContextInfo catalog="main" connection="SampleData\CompanySalesDB\companySales.sqlite" contextType="sqlite" databaseMajorVersion="3" disable_foreign_keys="0" vendor="sqlite"/>
+				<dbContextInfo catalog="main" connection="C:\MTworking\SampleData\CompanySalesDB\companySales.sqlite" contextType="sqlite" databaseMajorVersion="3" disable_foreign_keys="0" vendor="sqlite"/>
 			</DBSource>
 		</children>
 	</DBSourcesRoot>

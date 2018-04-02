@@ -5,7 +5,7 @@ In our scenario, the inventory manager purchases pre-assembled build kits contai
 
 When the factory is running, the inventory manager’s job is to monitor incoming orders and existing inventory. The manager orders new components as necessary with the goal of maintaining at least 50 percent but no more than 200 percent of average daily demand as parts are consumed on the assembly line.
 
-This app also uses the widgetorders database supplied with the MobileTogether Designer examples.
+This app also uses the widgetorders database supplied with the MobileTogether Designer examples. The database must be located at C:\MTworking\SampleData\CompanySalesDB\companySales.sqlite
 
 You can download the free-to-use MobileTogether Designer at http://www.altova.com/download/mobiletogether-designer.html
 Open the file InventoryManager.mtd in the MobileTogether Designer to examine how it was built and execute it in the Designer Simulation feature.
